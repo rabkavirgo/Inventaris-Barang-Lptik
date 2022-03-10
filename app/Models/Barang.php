@@ -21,7 +21,6 @@ class Barang extends Model
 	'bahan',
 	'harga' ,
 	'catatan',
-	'pernahPerbaikan' ,
 	'waktuMasuk',
     ];
 }

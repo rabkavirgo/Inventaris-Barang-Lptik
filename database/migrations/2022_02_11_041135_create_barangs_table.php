@@ -26,7 +26,6 @@ class CreateBarangsTable extends Migration
             $table->string('bahan');
             $table->bigInteger('harga');
             $table->text('catatan');
-            $table->boolean('pernahPerbaikan');
             $table->date('waktuMasuk');
             
             $table->timestamps();
