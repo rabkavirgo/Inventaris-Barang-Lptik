@@ -9,4 +9,19 @@ class Barang extends Model
 {   
     protected $table = 'barangs';
     use HasFactory;
+    protected $fillable=[
+	'ruangId',
+	'kodeBarang',
+	'namaBarang',
+	'jenisBarang',
+	'kondisi',
+	'statusPerbaikan',
+	'merk',
+	'asalPerolehan',
+	'bahan',
+	'harga' ,
+	'catatan',
+	'pernahPerbaikan' ,
+	'waktuMasuk',
+    ];
 }

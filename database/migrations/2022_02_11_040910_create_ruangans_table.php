@@ -16,6 +16,8 @@ class CreateRuangansTable extends Migration
         Schema::create('ruangans', function (Blueprint $table) {
             $table->id();
             $table->string('namaRuangan');
+            $table->unsignedBigInteger('penanggungJawabId');
+
             $table->timestamps();
         });
     }
