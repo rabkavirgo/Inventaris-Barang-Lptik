@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\RuangController;
-
+use App\Http\Controllers\PenanggungJawabController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,10 +35,10 @@ Route::get('/test', function () {
 
 
     }); */
-    
+
     Route::group(['prefix'  => 'dashboard/'],function(){
         Route::get('/',[BarangController::class, 'dashboard'])->name('barang.dashboard');
-      
+
     });
 
     Route::group(['prefix'  => 'barang/'],function(){
@@ -57,8 +58,18 @@ Route::get('/test', function () {
         Route::patch('update/{id}',[RuangController::class, 'update'])->name('ruang.update');
         Route::delete('/delete/{id}',[RuangController::class, 'delete'])->name('ruang.delete');
     });
-    
-    
+
+    Route::group(['prefix'  => 'penanggung_jawab/'],function(){
+        Route::get('/',[PenanggungJawabController::class, 'index'])->name('pj');
+        Route::get('/add',[PenanggungJawabController::class, 'add'])->name('pj.add');
+        Route::post('/post',[PenanggungJawabController::class, 'post'])->name('pj.post');
+        Route::get('{id}/edit',[PenanggungJawabController::class, 'edit'])->name('pj.edit');
+        Route::patch('update/{id}',[PenanggungJawabController::class, 'update'])->name('pj.update');
+        Route::delete('/delete/{id}',[PenanggungJawabController::class, 'delete'])->name('pj.delete');
+    });
+
+
+
 /*
     Route::group(['prefix' => 'barang'], function(){
         Route::get('/','BarangController@index')->name('barang');

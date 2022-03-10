@@ -42,6 +42,21 @@
                                 </div>
                             </div>
 
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Penanggung Jawab</label>
+                                <select name="penanggungJawabId" class="form-control">
+                                    <option disabled>-- pilih Status Anak --</option>
+                                    <option {{ $data->penanggungJawabId == "1" ? 'selected' : '' }} value="1">Aziz</option>
+                                    <option {{ $data->penanggungJawabId == "2" ? 'selected' : '' }} value="2">Agoy</option>
+                                    <option {{ $data->penanggungJawabId == "3" ? 'selected' : '' }} value="3">TENGAH</option>
+                                </select>
+                                <div>
+                                    @if ($errors->has('penanggungJawabId'))
+                                        <small class="form-text text-danger">{{ $errors->first('penanggungJawabId') }}</small>
+                                    @endif
+                                </div>
+                            </div>
+
                         <div class="col-md-12 text-center">
                             <hr style="width: 50%" class="mt-0">
                             <a href="{{ route('ruang') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>

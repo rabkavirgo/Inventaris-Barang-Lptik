@@ -24,9 +24,9 @@
                                 <strong>Gagal :</strong>{{ $message }}
                             </div>
                             @else
-                            <div class="alert alert-success alert-block" id="keterangan">
+                            <div class="alert alert-success alert-block" id="">
                                 <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua data anak yang sudah diunggah
-                          
+
                             </div>
                     @endif
                 </div>
@@ -38,7 +38,7 @@
                 -->
                 </div>
 
-                <!-- modal tambah --> 
+                <!-- modal tambah -->
                 <!--
                 <div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="exampleModelLabel" arie-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -63,10 +63,17 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Barang</th>
-                                <th>Keterangan</th>
+                                <th>Ruangan</th>
+                                <th>Jenis Barang</th>
+                                <th>Kondisi</th>
                                 <th>Status Perbaikan</th>
-                                <th>Tanggal Masuk</th>
-                        
+                                <th>Merk</th>
+                                <th>Asal Perolehan</th>
+                                <th>Bahan</th>
+                                <th>Harga</th>
+                                <th>Catatan</th>
+                                <th>Waktu Masuk</th>
+
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -77,11 +84,26 @@
                             @foreach ($barangs as $barang)
                             <tr>
                                 <td> {{ $no++}} </td>
-                                
+
                                 <td> {{ $barang->namaBarang}}</td>
-                                <td> {{ $barang->keterangan}}</td>
-                                <td> {{ $barang->status}}</td>
-                                <td> {{ $barang->tanggalMasuk}}</td>
+                                <td>
+                                    {{ $barang->namaRuangan }}
+                                </td>
+                                <td> {{ $barang->jenisBarang}}</td>
+                                <td> {{ $barang->kondisi}}</td>
+                                <td>
+                                    @if ($barang->statusPerbaikan == "0")
+                                        <a style="color: green"><i class="fa fa-check-circle"></i>&nbsp; Belum ada perbaikan</a>
+                                        @else
+                                        <a style="color: red"><i class="fa fa-close"></i>&nbsp; Sudah ada perbaikan</a>
+                                    @endif
+                                </td>
+                                <td> {{ $barang->merk}}</td>
+                                <td> {{ $barang->asalPerolehan}}</td>
+                                <td> {{ $barang->bahan}}</td>
+                                <td> {{ $barang->harga}}</td>
+                                <td> {{ $barang->catatan}}</td>
+                                <td> {{ $barang->waktuMasuk}}</td>
                                 <td>
                                 <a href="{{ route('barang.edit',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
                                 <form action="{{ route('barang.delete',[$barang->id]) }}" method="POST">
@@ -92,9 +114,9 @@
                                 </td>
                             </tr>
                             @endforeach
-                            
+
                         </tbody>
-                        
+
                     </table>
                 </div>
             </div>

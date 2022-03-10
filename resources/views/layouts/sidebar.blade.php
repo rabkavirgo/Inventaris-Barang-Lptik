@@ -2,6 +2,10 @@
     <a href=" {{ route('barang.dashboard') }} "><i class="fa fa-dashboard"></i>Dashboard</a>
 </li>
 
+<li><a href=" {{ route('pj') }}  "><i class="fa fa-users"></i>Penanggung Jawab</a>
+    
+</li>
+
 <li>
     <a href=" {{ route('ruang') }} "><i class="fa fa-user"></i>Data Ruang</a>
 </li>
@@ -9,6 +13,8 @@
 <li><a href=" {{ route('barang') }}  "><i class="fa fa-history"></i>Data Barang</a>
     
 </li>
+
+
 
 <li>
     <a href=" " target="_blank"><i class="fa fa-download"></i>Cetak Laporan</a>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BarangController extends Controller
 {
@@ -15,31 +16,45 @@ class BarangController extends Controller
 
     public function dashboard(){
         // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
-        $barang='barang';
-        return view('layouts/dashboard',['barang'=> $barang]);
+        $barang = count(Barang::all());
+        $ruang = count(Ruangan::all());
+        $elektronik = count(Barang::where('jenisBarang','elektronik')->get());
+        $nonelektronik = count(Barang::where('jenisBarang','nonelektronik')->get());
+
+        $perRuang = Barang::join('ruangans','ruangans.id','barangs.ruangId')
+                            ->select('namaRuangan',DB::raw('count(barangs.id) as jumlah'))
+                            ->groupBy('ruangans.id')->get();
+        return view('layouts/dashboard',compact('barang','ruang','elektronik','nonelektronik','perRuang'));
     }
 
     public function index(){
         // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
-        $barangs = Barang::select('id','namaBarang','ruangId','keterangan','tanggalMasuk','status')->get();
+        $barangs = Barang::join('ruangans','ruangans.id','barangs.ruangId')
+                            ->select('barangs.id','namaRuangan','kodeBarang','namaBarang','jenisBarang','kondisi','statusPerbaikan','merk','asalPerolehan','bahan','harga','catatan','waktuMasuk')->get();
         return view('barang/index',compact('barangs'));
     }
 
     public function add(){
-        $barang = Barang::all();
         $ruang = Ruangan::all();
-        return view('barang.add',compact('barang'));
+        return view('barang.add',compact('ruang'));
     }
 
     public function post(Request $request){
     // return $request->all();
         $barang = new Barang;
-        $barang->namaBarang = $request->namaBarang;
         $barang->ruangId = $request->ruangId;
-        $barang->keterangan = $request->keterangan;
+        $barang->namaBarang = $request->namaBarang;
+        $barang->kodeBarang = $request->kodeBarang;
+        $barang->jenisBarang = $request->jenisBarang;
+        $barang->kondisi = $request->kondisi;
         $barang->statusPerbaikan = $request->statusPerbaikan;
-        $barang->status = $request->status;
-        $barang->tanggalMasuk = $request->tanggalMasuk;
+        $barang->merk = $request->merk;
+        $barang->asalPerolehan = $request->asalPerolehan;
+        $barang->bahan = $request->bahan;
+        $barang->harga = $request->harga;
+        $barang->catatan = $request->catatan;
+        $barang->waktuMasuk = $request->waktuMasuk;
+        $barang->statusPerbaikan = false;
         $barang->save();
 
         return redirect()->route('barang')->with(['success' => 'Data barang sudah ditambahkan !']);
@@ -59,22 +74,28 @@ class BarangController extends Controller
             ],
         ];
         $attributes = [
-            
+
         ];
         $this->validate($request, [
-           
+
         ],$messages,$attributes);
 
 
             Barang::where('id',$id)->update([
 
-                
+
                 'namaBarang'    =>  $request->namaBarang,
                 'ruangId'    =>  $request->ruangId,
-                'keterangan'    =>  $request->keterangan,
+                'kodeBarang'    =>  $request->kodeBarang,
+                'jenisBarang'    =>  $request->jenisBarang,
+                'kondisi'    =>  $request->kondisi,
                 'statusPerbaikan'    =>  $request->statusPerbaikan,
-                'status'    =>  $request->status,
-                'tanggalMasuk'    =>  $request->tanggalMasuk,
+                'merk'    =>  $request->merk,
+                'asalPerolehan'    =>  $request->asalPerolehan,
+                'bahan'    =>  $request->bahan,
+                'harga'    =>  $request->harga,
+                'catatan'    =>  $request->catatan,
+                'waktuMasuk'    =>  $request->waktuMasuk,
             ]);
 
             $notification = array(

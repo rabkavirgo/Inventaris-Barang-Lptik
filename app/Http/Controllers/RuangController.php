@@ -4,26 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Ruangan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RuangController extends Controller
 {
     public function index(){
         // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
-        $ruangs = Ruangan::select('id','namaRuangan')->get();
+        $ruangs = Ruangan::join('users','users.id','ruangans.penanggungJawabId')->select('ruangans.id','namaRuangan','name as penanggungJawab')->get();
         return view('ruang/index',compact('ruangs'));
     }
 
     public function add(){
-        $barang = Barang::all();
-        $ruang = Ruangan::all();
-        return view('ruang.add',compact('ruang'));
+        $pj = User::where('role','pj')->get();
+        return view('ruang.add',compact('pj'));
     }
 
     public function post(Request $request){
         // return $request->all();
             $ruang = new Ruangan;
             $ruang->namaRuangan = $request->namaRuangan;
+            $ruang->penanggungJawabId = $request->penanggungJawabId;
          
             $ruang->save();
     
@@ -56,6 +57,7 @@ class RuangController extends Controller
 
                 
                 'namaRuangan'    =>  $request->namaRuangan,
+                'penanggungJawabId' => $request->penanggungJawabId,
             ]);
 
             $notification = array(
