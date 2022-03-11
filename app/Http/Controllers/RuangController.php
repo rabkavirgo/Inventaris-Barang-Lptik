@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 class RuangController extends Controller
 {
     public function index(){
-        // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
         $ruangs = Ruangan::join('users','users.id','ruangans.penanggungJawabId')->select('ruangans.id','namaRuangan','name as penanggungJawab')->get();
         return view('ruang/index',compact('ruangs'));
     }
@@ -34,7 +33,8 @@ class RuangController extends Controller
 
      public function edit($id){
         $data = Ruangan::where('id',$id)->first();
-        return view('ruang/.edit',compact('data'));
+        $pj = User::all();
+        return view('ruang/.edit',compact('data','pj'));
     }
 
     public function update(Request $request, $id){

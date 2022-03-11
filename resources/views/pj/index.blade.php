@@ -25,7 +25,7 @@
                             </div>
                             @else
                             <div class="alert alert-success alert-block" id="">
-                                <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua data Penanggung Jawab
+                                <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua data yang sudah diunggah
 
                             </div>
                     @endif

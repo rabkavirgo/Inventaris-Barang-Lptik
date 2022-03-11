@@ -32,7 +32,7 @@
                 <div class="col-md-12">
                     <div class="alert alert-primary alert-block text-center" id="keterangan">
 
-                        <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan Penanggung Jawab!!
+                        <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan data penanggung jawab yang valid dan dapat dihubungi via email
                     </div>
                 </div>
                 <div class="col-md-12">
