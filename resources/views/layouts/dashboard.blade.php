@@ -26,7 +26,7 @@
     </header>
     <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
         <div class="row" style="margin-right:-15px; margin-left:-15px;">
-            <div class="col-md-12">Selamat datang di halaman administrator pada<b> SISTEM INVENTARIS LPTIK UNIB</b></div>
+            <div class="col-md-12">Selamat datang di<b> SISTEM INVENTARIS LPTIK UNIB</b></div>
         </div>
     </div>
 </section>
