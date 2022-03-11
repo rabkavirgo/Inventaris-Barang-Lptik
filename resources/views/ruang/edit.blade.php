@@ -14,27 +14,35 @@
             color:#007bff;
         }
     </style>
+      <script>
+     $( function() {
+    $( "#date" ).datepicker({
+      dateFormat: "yy-mm-dd"
+    });
+  } );
+  </script>
 @endpush
 @section('content')
     <section class="panel" style="margin-bottom:20px;">
         <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
-            <i class="fa fa-home"></i>&nbsp;Arsip Dokumen Universitas Bengkulu
+            <i class="fa fa-home"></i>&nbsp;Sistem Inventaris LPTIK UNIB
         </header>
         <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
             <div class="row" style="margin-right:-15px; margin-left:-15px;">
                 <div class="col-md-12">
                     <div class="alert alert-primary alert-block text-center" id="keterangan">
 
-                        <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan usulan kegiatan anda, harap melengkapi data terlebih dahulu agar proses pengajuan usulan tidak ada masalah kedepannya !!
+                        <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan ubah data ruangan yang memiliki inventaris
                     </div>
                 </div>
-                <div class="row">
-                    <form action="{{ route('ruang.update',[$data->id]) }}" enctype="multipart/form-data" method="POST">
+                <div class="col-md-12">
+           <form action="{{ route('ruang.update',[$data->id]) }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }} {{ method_field('PATCH') }}
 
+                        <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Nama</label>
-                                <input type="text" value="{{ $data->namaRuangan }}" name="namaRuangan" class="tags form-control @error('namaRuangan') is-invalid @enderror" />
+                                <label for="exampleInputEmail1">Nama Ruangan</label>
+                                <input type="text" name="namaRuangan" value="{{ $data->namaRuangan }}" class="tags form-control @error('namaRuangan') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('namaRuangan'))
                                         <small class="form-text text-danger">{{ $errors->first('namaRuangan') }}</small>
@@ -44,19 +52,20 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Penanggung Jawab</label>
-                                <select name="penanggungJawabId" class="form-control">
-                                    <option disabled>-- pilih Status Anak --</option>
-                                    <option {{ $data->penanggungJawabId == "1" ? 'selected' : '' }} value="1">Aziz</option>
-                                    <option {{ $data->penanggungJawabId == "2" ? 'selected' : '' }} value="2">Agoy</option>
-                                    <option {{ $data->penanggungJawabId == "3" ? 'selected' : '' }} value="3">TENGAH</option>
-                                </select>
+                                <select name="penanggungJawabId" class="form-control" id="">
+                                <option disabled selected>-- pilih Penanggung Jawab --</option>
+                                    @foreach ($pj as $pj)
+                                        <option value="{{ $pj->id}}">{{ $pj->name }}</option>
+                                    @endforeach
+                                    </select>
                                 <div>
                                     @if ($errors->has('penanggungJawabId'))
                                         <small class="form-text text-danger">{{ $errors->first('penanggungJawabId') }}</small>
                                     @endif
                                 </div>
                             </div>
-
+                        </div>
+                            
                         <div class="col-md-12 text-center">
                             <hr style="width: 50%" class="mt-0">
                             <a href="{{ route('ruang') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>

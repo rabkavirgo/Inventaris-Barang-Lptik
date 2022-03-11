@@ -103,7 +103,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Status Perbaikan</label>
                                 <select name="statusPerbaikan" class="form-control">
                                     <option disabled>-- pilih status --</option>

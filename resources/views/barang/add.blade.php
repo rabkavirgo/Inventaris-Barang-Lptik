@@ -32,14 +32,14 @@
                 <div class="col-md-12">
                     <div class="alert alert-primary alert-block text-center" id="keterangan">
 
-                        <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan usulan kegiatan anda, harap melengkapi data terlebih dahulu agar proses pengajuan usulan tidak ada masalah kedepannya !!
+                        <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan data barang yang dimiliki oleh masing - masing ruangan, harap diperhatikan detail setiap isian data
                     </div>
                 </div>
                 <div class="row">
                     <form action="{{ route('barang.post') }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }} {{ method_field('POST') }}
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nama Barang</label>
                                 <input type="text" name="namaBarang" class="tags form-control @error('namaBarang') is-invalid @enderror" />
                                 <div>
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Kode Barang</label>
                                 <input type="text" name="kodeBarang" class="tags form-control @error('kodeBarang') is-invalid @enderror" />
                                 <div>
@@ -59,10 +59,10 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nama Ruang</label>
                                 <select name="ruangId" class="form-control">
-                                    <option disabled selected>-- pilih Kondisi --</option>
+                                    <option disabled selected>-- pilih ruang --</option>
                                     @foreach ($ruang as $ruang)
                                         <option value="{{ $ruang->id }}">{{ $ruang->namaRuangan }}</option>
                                     @endforeach
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Jenis Barang</label>
                                 <select name="jenisBarang" class="form-control">
                                     <option disabled>-- pilih jenis --</option>
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Kondisi</label>
                                 <select name="kondisi" class="form-control">
                                     <option disabled>-- pilih Kondisi --</option>
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Merk</label>
                                 <input type="text" name="merk" class="tags form-control @error('merk') is-invalid @enderror" />
                                 <div>
@@ -112,7 +112,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Asal Perolehan</label>
                                 <input type="text" name="asalPerolehan" class="tags form-control @error('asalPerolehan') is-invalid @enderror" />
                                 <div>
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Bahan</label>
                                 <input type="text" name="bahan" class="tags form-control @error('bahan') is-invalid @enderror" />
                                 <div>
@@ -132,7 +132,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Harga</label>
                                 <input type="text" name="harga" class="tags form-control @error('harga') is-invalid @enderror" />
                                 <div>
@@ -142,7 +142,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Catatan</label>
                                 <input type="text" name="catatan" class="tags form-control @error('catatan') is-invalid @enderror" />
                                 <div>
@@ -153,7 +153,7 @@
                             </div>
 
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Masuk</label>
                                 <input type="date" name="waktuMasuk" id="date" class="tags form-control @error('waktuMasuk') is-invalid @enderror" />
                                 <div>
@@ -165,7 +165,7 @@
 
                         <div class="col-md-12 text-center">
                             <hr style="width: 50%" class="mt-0">
-                            <a href="" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <a href="{{ route('barang') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
                             <button type="reset" name="reset" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
                             <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i>&nbsp;Simpan Data</button>
                         </div>

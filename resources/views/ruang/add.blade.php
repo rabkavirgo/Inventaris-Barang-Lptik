@@ -32,7 +32,7 @@
                 <div class="col-md-12">
                     <div class="alert alert-primary alert-block text-center" id="keterangan">
 
-                        <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan usulan kegiatan anda, harap melengkapi data terlebih dahulu agar proses pengajuan usulan tidak ada masalah kedepannya !!
+                        <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan data ruangan yang memiliki inventaris
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -68,7 +68,7 @@
                             
                         <div class="col-md-12 text-center">
                             <hr style="width: 50%" class="mt-0">
-                            <a href="" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <a href="{{ route('ruang') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
                             <button type="reset" name="reset" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
                             <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i>&nbsp;Simpan Data</button>
                         </div>
