@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\PenanggungJawabController;
 use Illuminate\Support\Facades\Auth;
@@ -66,6 +67,10 @@ Route::get('/test', function () {
         Route::get('{id}/edit',[PenanggungJawabController::class, 'edit'])->name('pj.edit');
         Route::patch('update/{id}',[PenanggungJawabController::class, 'update'])->name('pj.update');
         Route::delete('/delete/{id}',[PenanggungJawabController::class, 'delete'])->name('pj.delete');
+    });
+
+    Route::group(['prefix'  => 'laporan/'],function(){
+        Route::get('/',[LaporanController::class, 'index'])->name('laporan');
     });
 
 

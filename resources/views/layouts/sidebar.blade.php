@@ -3,7 +3,7 @@
 </li>
 
 <li><a href=" {{ route('pj') }}  "><i class="fa fa-users"></i>Penanggung Jawab</a>
-    
+
 </li>
 
 <li>
@@ -11,13 +11,11 @@
 </li>
 
 <li><a href=" {{ route('barang') }}  "><i class="fa fa-history"></i>Data Barang</a>
-    
+
 </li>
 
-
-
 <li>
-    <a href=" " target="_blank"><i class="fa fa-download"></i>Cetak Laporan</a>
+    <a href="{{ route('laporan') }}"><i class="fa fa-download"></i>Cetak Laporan</a>
 </li>
 
 <li style="padding-left:2px;">
