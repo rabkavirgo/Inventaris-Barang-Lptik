@@ -71,6 +71,7 @@ Route::get('/test', function () {
 
     Route::group(['prefix'  => 'laporan/'],function(){
         Route::get('/',[LaporanController::class, 'index'])->name('laporan');
+        Route::post('/cari',[LaporanController::class, 'cari'])->name('laporan.cari');
     });
 
 
