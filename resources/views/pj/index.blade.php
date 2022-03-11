@@ -25,8 +25,8 @@
                             </div>
                             @else
                             <div class="alert alert-success alert-block" id="">
-                                <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua data anak yang sudah diunggah
-                          
+                                <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua data Penanggung Jawab
+
                             </div>
                     @endif
                 </div>
@@ -38,7 +38,7 @@
                 -->
                 </div>
 
-                <!-- modal tambah --> 
+                <!-- modal tambah -->
                 <!--
                 <div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="exampleModelLabel" arie-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -74,7 +74,7 @@
                             @foreach ($pj as $pj)
                             <tr>
                                 <td> {{ $no++}} </td>
-                                
+
                                 <td> {{ $pj->name}}</td>
                                 <td> {{ $pj->email}}</td>
                                 <td>
@@ -87,9 +87,9 @@
                                 </td>
                             </tr>
                             @endforeach
-                            
+
                         </tbody>
-                        
+
                     </table>
                 </div>
             </div>

@@ -185,7 +185,7 @@
         <!-- footer content -->
         <footer style="overflow:hidden;">
           <div class="pull-right">
-            Copyright © 2021  <a href="https://manicbenteng.sch.id/" target="_blank">MAN Insan Cendikia  Bengkulu Tengah</a>
+            Copyright © 2021  <a href="https://lptik.unib.ac.id/" target="_blank">LPTIK UNIVERSITAS BENGKULU</a>
           </div>
           <div class="clearfix"></div>
         </footer>
