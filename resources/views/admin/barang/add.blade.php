@@ -1,7 +1,11 @@
-@extends('layouts.layout')
-@section('title', 'Manajemen Klasifikasi Berkas')
+@extends('admin/layouts.layout')
+@section('login_as','Administrator')
+@section('user-login')
+    {{ Auth::user()->name }}
+@endsection
+@section('title', 'LPTIK')
 @section('sidebar-menu')
-    @include('layouts.sidebar')
+    @include('admin/layouts.sidebar')
 @endsection
 @push('styles')
     <style>

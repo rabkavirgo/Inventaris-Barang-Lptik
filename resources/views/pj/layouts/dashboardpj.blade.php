@@ -1,10 +1,11 @@
-@extends('layouts.layout')
-@section('login_as','Penanggung Jawab')
+@extends('pj/layouts.layout')
+@section('login_as','Penanggun Jawab')
+@section('login_as2','Penanggun Jawab')
 @section('user-login')
     {{ Auth::user()->name }}
 @endsection
 @section('sidebar-menu')
-    @include('layouts.sidebar_pj')
+    @include('pj/layouts.sidebar_pj')
 @endsection
 @push('styles')
     <!-- Styles -->
@@ -21,7 +22,7 @@
 @endpush
 @section('content')
 <section class="panel" style="margin-bottom:20px;">
-    <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
+    <header class="panel-heading" style="color: #ffffff;background-color: #1a76cc;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
         <i class="fa fa-home"></i>&nbsp;Dashboard
         <span class="tools pull-right" style="margin-top:-5px;">
             <a class="fa fa-chevron-down" href="javascript:;" style="float: left;margin-left: 3px;padding: 10px;text-decoration: none;"></a>
@@ -38,7 +39,7 @@
 
         <div class="col-md-12">
             <section class="panel">
-                <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
+                <header class="panel-heading" style="color: #ffffff;background-color: #1a76cc;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
                     <i class="fa fa-bar-chart"></i>&nbsp;Informasi Detail Data Barang
                 </header>
                 <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
@@ -48,7 +49,7 @@
                             <div class="small-box bg-aqua" style="margin-bottom:0px;">
                                 <div class="inner">
                                 <h3>
-
+                                    {{ $ruang }}
                                 </h3>
 
                                 <p>Jumlah Ruangan</p>
@@ -64,7 +65,7 @@
                             <div class="small-box bg-red" style="margin-bottom:0px;">
                                 <div class="inner">
                                 <h3>
-
+                                    {{ $barang }}
                                 </h3>
 
                                 <p>Jumlah Barang</p>
@@ -80,7 +81,7 @@
                             <div class="small-box bg-yellow" style="margin-bottom:0px;">
                                 <div class="inner">
                                 <h3>
-
+                                    {{ $elektronik }}
                                 </h3>
 
                                 <p>Barang Elektronik</p>
@@ -96,7 +97,7 @@
                             <div class="small-box bg-green" style="margin-bottom:0px;">
                                 <div class="inner">
                                 <h3>
-
+                                    {{ $nonelektronik }}
                                 </h3>
 
                                 <p>Barang Non Elektronik</p>
@@ -115,7 +116,7 @@
     <div class="row">
         <div class="col-md-6">
             <section class="panel">
-                <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
+                <header class="panel-heading" style="color: #ffffff;background-color: #1a76cc;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
                     <i class="fa fa-bar-chart"></i>&nbsp;Statistik Per Jenis Barang (Diagram Lingkaran)
                 </header>
                 <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
@@ -123,12 +124,12 @@
                         <div class="col-md-12">
                             @section('charts')
                                 chart.data = [
-                                    {{-- @foreach ($perRuang as $data)
+                                    @foreach ($perJenis as $data)
                                         {
-                                            "country": "{{ $data['namaRuangan'] }}",
+                                            "country": "{{ $data['jenisBarang'] }}",
                                             "litres": {{ $data['jumlah'] }}
                                         },
-                                    @endforeach --}}
+                                    @endforeach
                                 ];
                             @endsection
                             <div id="chartdiv"></div>
@@ -140,7 +141,7 @@
 
         <div class="col-md-6">
             <section class="panel">
-                <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
+                <header class="panel-heading" style="color: #ffffff;background-color: #1a76cc;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
                     <i class="fa fa-bar-chart"></i>&nbsp;Statistik Per Jenis Barang (Diagram Batang)
                 </header>
                 <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
@@ -148,12 +149,12 @@
                         <div class="col-md-12">
                             @section('charts2')
                                 chart.data = [
-                                    {{-- @foreach ($perRuang as $data)
+                                    @foreach ($perJenis as $data)
                                         {
-                                                "country": "{{ $data['namaRuangan'] }}",
+                                                "country": "{{ $data['jenisBarang'] }}",
                                             "visits": {{ $data['jumlah'] }}
                                         },
-                                    @endforeach --}}
+                                    @endforeach
                                 ];
                             @endsection
                             <div id="chartdiv2"></div>

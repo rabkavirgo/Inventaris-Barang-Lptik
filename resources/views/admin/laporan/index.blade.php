@@ -1,9 +1,13 @@
 
-@extends('layouts.layout')
-@section('title', 'Laporan')
+@extends('admin/layouts.layout')
+@section('login_as','Administrator')
+@section('user-login')
+    {{ Auth::user()->name }}
+@endsection
+@section('title', 'LPTIK')
 
 @section('sidebar-menu')
-    @include('layouts.sidebar')
+    @include('admin/layouts.sidebar')
 @endsection
 @push('styles')
     <!-- Styles -->
@@ -84,7 +88,7 @@
                         </div>
                     </section>
                 </div>
-        
+
                 <div class="col-md-6">
                     <section class="panel">
                         <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">

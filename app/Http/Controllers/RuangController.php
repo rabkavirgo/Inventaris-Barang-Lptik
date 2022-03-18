@@ -11,12 +11,12 @@ class RuangController extends Controller
 {
     public function index(){
         $ruangs = Ruangan::join('users','users.id','ruangans.penanggungJawabId')->select('ruangans.id','namaRuangan','name as penanggungJawab')->get();
-        return view('ruang/index',compact('ruangs'));
+        return view('admin/ruang/index',compact('ruangs'));
     }
 
     public function add(){
         $pj = User::where('role','pj')->get();
-        return view('ruang.add',compact('pj'));
+        return view('admin/ruang.add',compact('pj'));
     }
 
     public function post(Request $request){
@@ -24,17 +24,17 @@ class RuangController extends Controller
             $ruang = new Ruangan;
             $ruang->namaRuangan = $request->namaRuangan;
             $ruang->penanggungJawabId = $request->penanggungJawabId;
-         
+
             $ruang->save();
-    
+
             return redirect()->route('ruang')->with(['success' => 'Data Ruangan sudah ditambahkan !']);
-    
+
      }
 
      public function edit($id){
         $data = Ruangan::where('id',$id)->first();
         $pj = User::all();
-        return view('ruang/.edit',compact('data','pj'));
+        return view('admin/ruang/.edit',compact('data','pj'));
     }
 
     public function update(Request $request, $id){
@@ -46,16 +46,16 @@ class RuangController extends Controller
             ],
         ];
         $attributes = [
-            
+
         ];
         $this->validate($request, [
-           
+
         ],$messages,$attributes);
 
 
             Ruangan::where('id',$id)->update([
 
-                
+
                 'namaRuangan'    =>  $request->namaRuangan,
                 'penanggungJawabId' => $request->penanggungJawabId,
             ]);

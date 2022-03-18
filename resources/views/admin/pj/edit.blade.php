@@ -1,7 +1,11 @@
-@extends('layouts.layout')
-@section('title', 'Manajemen Klasifikasi Berkas')
+@extends('admin/layouts.layout')
+@section('login_as','Administrator')
+@section('user-login')
+    {{ Auth::user()->name }}
+@endsection
+@section('title', 'LPTIK')
 @section('sidebar-menu')
-    @include('layouts.sidebar')
+    @include('admin/layouts.sidebar')
 @endsection
 @push('styles')
     <style>
@@ -14,13 +18,6 @@
             color:#007bff;
         }
     </style>
-      <script>
-     $( function() {
-    $( "#date" ).datepicker({
-      dateFormat: "yy-mm-dd"
-    });
-  } );
-  </script>
 @endpush
 @section('content')
     <section class="panel" style="margin-bottom:20px;">
@@ -32,43 +29,41 @@
                 <div class="col-md-12">
                     <div class="alert alert-primary alert-block text-center" id="keterangan">
 
-                        <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan data ruangan yang memiliki inventaris
+                        <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan Penanggung Jawab !!
                     </div>
                 </div>
+
+
                 <div class="col-md-12">
-                    <form action="{{ route('ruang.post') }}" enctype="multipart/form-data" method="POST">
-                        {{ csrf_field() }} {{ method_field('POST') }}
+                    <form action="{{ route('pj.update',[$data->id]) }}" enctype="multipart/form-data" method="POST">
+                        {{ csrf_field() }} {{ method_field('PATCH') }}
 
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Nama Ruangan</label>
-                                <input type="text" name="namaRuangan" class="tags form-control @error('namaRuangan') is-invalid @enderror" />
+                                <label for="exampleInputEmail1">Nama Penanggung Jawab</label>
+                                <input type="text" value="{{ $data->name }}" name="name" class="tags form-control @error('name') is-invalid @enderror" />
                                 <div>
-                                    @if ($errors->has('namaRuangan'))
-                                        <small class="form-text text-danger">{{ $errors->first('namaRuangan') }}</small>
+                                    @if ($errors->has('name'))
+                                        <small class="form-text text-danger">{{ $errors->first('name') }}</small>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" value="{{ $data->email }}" name="email" class="tags form-control @error('email') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('email'))
+                                        <small class="form-text text-danger">{{ $errors->first('email') }}</small>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Penanggung Jawab</label>
-                                <select name="penanggungJawabId" class="form-control" id="">
-                                <option disabled selected>-- pilih Penanggung Jawab --</option>
-                                    @foreach ($pj as $pj)
-                                        <option value="{{ $pj->id}}">{{ $pj->name }}</option>
-                                    @endforeach
-                                    </select>
-                                <div>
-                                    @if ($errors->has('penanggungJawabId'))
-                                        <small class="form-text text-danger">{{ $errors->first('penanggungJawabId') }}</small>
-                                    @endif
-                                </div>
-                            </div>
                         </div>
-                            
+
+
                         <div class="col-md-12 text-center">
                             <hr style="width: 50%" class="mt-0">
-                            <a href="{{ route('ruang') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <a href="{{ route('pj') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
                             <button type="reset" name="reset" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
                             <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i>&nbsp;Simpan Data</button>
                         </div>

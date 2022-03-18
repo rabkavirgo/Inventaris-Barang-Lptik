@@ -4,6 +4,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\PenanggungJawabController;
+use App\Http\Controllers\Pj\BarangPjController;
 use App\Http\Controllers\Pj\DashboardPjController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -83,6 +84,11 @@ Route::get('/test', function () {
         Route::get('/dashboard',[DashboardPjController::class, 'dashboard'])->name('pj.dashboard');
 
         Route::group(['prefix'  => 'barang/'],function(){
-            Route::get('/',[DashboardPjController::class, 'dashboard'])->name('pj.barang');
+            Route::get('/',[BarangPjController::class, 'index'])->name('pj.barang');
+            Route::get('/add',[BarangPjController::class, 'add'])->name('pj.barang.add');
+            Route::post('/post',[BarangPjController::class, 'post'])->name('pj.barang.post');
+            Route::get('{id}/edit',[BarangPjController::class, 'edit'])->name('pj.barang.edit');
+            Route::patch('update/{id}',[BarangPjController::class, 'update'])->name('pj.barang.update');
+            Route::delete('/delete/{id}',[BarangPjController::class, 'delete'])->name('pj.barang.delete');
         });
     });

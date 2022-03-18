@@ -1,9 +1,13 @@
 
-@extends('layouts.layout')
-@section('title', 'Manajemen Data Personal')
+@extends('admin/layouts.layout')
+@section('login_as','Administrator')
+@section('user-login')
+    {{ Auth::user()->name }}
+@endsection
+@section('title', 'LPTIK')
 
 @section('sidebar-menu')
-    @include('layouts.sidebar')
+    @include('admin/layouts.sidebar')
 @endsection
 @section('content')
     <section class="panel" style="margin-bottom:20px;">
@@ -31,7 +35,7 @@
                     @endif
                 </div>
                 <div class="col-md-12">
-                <a href="{{ route('pj.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
+                <a href="{{ route('barang.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
                  <!--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modaltambah" href="{{ route('barang.add') }}">
                         <i class="fa fa-plus"></i>&nbsp;Tambah Baru
                     </button>
@@ -62,8 +66,18 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Penanggung Jawab</th>
-                                <th>Email</th>
+                                <th>Nama Barang</th>
+                                <th>Ruangan</th>
+                                <th>Jenis Barang</th>
+                                <th>Kondisi</th>
+                                <th>Status Perbaikan</th>
+                                <th>Merk</th>
+                                <th>Asal Perolehan</th>
+                                <th>Bahan</th>
+                                <th>Harga</th>
+                                <th>Catatan</th>
+                                <th>Waktu Masuk</th>
+
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -71,15 +85,32 @@
                             @php
                                 $no=1;
                             @endphp
-                            @foreach ($pj as $pj)
+                            @foreach ($barangs as $barang)
                             <tr>
                                 <td> {{ $no++}} </td>
 
-                                <td> {{ $pj->name}}</td>
-                                <td> {{ $pj->email}}</td>
+                                <td> {{ $barang->namaBarang}}</td>
                                 <td>
-                                <a href="{{ route('pj.edit',[$pj->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                                <form action="{{ route('pj.delete',[$pj->id]) }}" method="POST">
+                                    {{ $barang->namaRuangan }}
+                                </td>
+                                <td> {{ $barang->jenisBarang}}</td>
+                                <td> {{ $barang->kondisi}}</td>
+                                <td>
+                                    @if ($barang->statusPerbaikan == "0")
+                                        <a style="color: green"><i class="fa fa-check-circle"></i>&nbsp; Belum ada perbaikan</a>
+                                        @else
+                                        <a style="color: red"><i class="fa fa-close"></i>&nbsp; Sudah ada perbaikan</a>
+                                    @endif
+                                </td>
+                                <td> {{ $barang->merk}}</td>
+                                <td> {{ $barang->asalPerolehan}}</td>
+                                <td> {{ $barang->bahan}}</td>
+                                <td> {{ $barang->harga}}</td>
+                                <td> {{ $barang->catatan}}</td>
+                                <td> {{ $barang->waktuMasuk}}</td>
+                                <td>
+                                <a href="{{ route('barang.edit',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                <form action="{{ route('barang.delete',[$barang->id]) }}" method="POST">
                                         {{ csrf_field() }} {{ method_field("DELETE") }}
 
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>

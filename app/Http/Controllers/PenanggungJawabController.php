@@ -10,11 +10,11 @@ class PenanggungJawabController extends Controller
     public function index(){
         // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
         $pj = User::where('role','pj')->get();
-        return view('pj/index',compact('pj'));
+        return view('admin/pj/index',compact('pj'));
     }
 
     public function add(){
-        return view('pj.add');
+        return view('admin/pj.add');
     }
 
     public function post(Request $request){
@@ -30,7 +30,7 @@ class PenanggungJawabController extends Controller
 
     public function edit($id){
         $data = User::where('id',$id)->first();
-        return view('pj/.edit',compact('data'));
+        return view('admin/pj/.edit',compact('data'));
     }
 
     public function update(Request $request, $id){

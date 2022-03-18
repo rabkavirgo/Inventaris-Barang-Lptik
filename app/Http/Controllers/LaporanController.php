@@ -13,7 +13,7 @@ class LaporanController extends Controller
         $ruangans = Ruangan::all();
         $barangs = Barang::join('ruangans','ruangans.id','barangs.ruangId')
                             ->select('barangs.id','namaRuangan','kodeBarang','namaBarang','jenisBarang','kondisi','statusPerbaikan','merk','asalPerolehan','bahan','harga','catatan','waktuMasuk')->get();
-        return view('laporan.index',compact('ruangans','barangs'));
+        return view('admin/laporan.index',compact('ruangans','barangs'));
     }
 
     public function cari(Request $request){
@@ -27,6 +27,6 @@ class LaporanController extends Controller
                             ->where('ruangId',$request->ruangId)
                             ->groupBy('jenisBarang')->get();
                             // return $perRuang;
-        return view('laporan.index',compact('barangs','ruangans','perRuang'));
+        return view('admin/laporan.index',compact('barangs','ruangans','perRuang'));
     }
 }

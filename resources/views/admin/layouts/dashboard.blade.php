@@ -1,6 +1,10 @@
-@extends('layouts.layout')
+@extends('admin/layouts.layout')
+@section('login_as','Administrator')
+@section('user-login')
+    {{ Auth::user()->name }}
+@endsection
 @section('sidebar-menu')
-    @include('layouts.sidebar')
+    @include('admin/layouts.sidebar')
 @endsection
 @push('styles')
     <!-- Styles -->
@@ -17,7 +21,7 @@
 @endpush
 @section('content')
 <section class="panel" style="margin-bottom:20px;">
-    <header class="panel-heading" style="color: #ffffff;background-color: #1a76cc;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
+    <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
         <i class="fa fa-home"></i>&nbsp;Dashboard
         <span class="tools pull-right" style="margin-top:-5px;">
             <a class="fa fa-chevron-down" href="javascript:;" style="float: left;margin-left: 3px;padding: 10px;text-decoration: none;"></a>
@@ -34,7 +38,7 @@
 
         <div class="col-md-12">
             <section class="panel">
-                <header class="panel-heading" style="color: #ffffff;background-color: #1a76cc;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
+                <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
                     <i class="fa fa-bar-chart"></i>&nbsp;Informasi Detail Data Barang
                 </header>
                 <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
@@ -111,8 +115,8 @@
     <div class="row">
         <div class="col-md-6">
             <section class="panel">
-                <header class="panel-heading" style="color: #ffffff;background-color: #1a76cc;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
-                    <i class="fa fa-bar-chart"></i>&nbsp;Statistik Per Jenis Barang (Diagram Lingkaran)
+                <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
+                    <i class="fa fa-bar-chart"></i>&nbsp;Statistik Per Ruangan (Diagram Lingkaran)
                 </header>
                 <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
                     <div class="row">
@@ -136,8 +140,8 @@
 
         <div class="col-md-6">
             <section class="panel">
-                <header class="panel-heading" style="color: #ffffff;background-color: #1a76cc;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
-                    <i class="fa fa-bar-chart"></i>&nbsp;Statistik Per Jenis Barang (Diagram Batang)
+                <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
+                    <i class="fa fa-bar-chart"></i>&nbsp;Statistik Per Ruangan (Diagram Batang)
                 </header>
                 <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
                     <div class="row">

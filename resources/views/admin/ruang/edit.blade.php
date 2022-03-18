@@ -1,7 +1,11 @@
-@extends('layouts.layout')
-@section('title', 'Manajemen Klasifikasi Berkas')
+@extends('admin/layouts.layout')
+@section('login_as','Administrator')
+@section('user-login')
+    {{ Auth::user()->name }}
+@endsection
+@section('title', 'LPTIK')
 @section('sidebar-menu')
-    @include('layouts.sidebar')
+    @include('admin/layouts.sidebar')
 @endsection
 @push('styles')
     <style>
@@ -36,7 +40,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-           <form action="{{ route('ruang.update',[$data->id]) }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('ruang.update',[$data->id]) }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }} {{ method_field('PATCH') }}
 
                         <div class="row">
@@ -65,7 +69,7 @@
                                 </div>
                             </div>
                         </div>
-                            
+
                         <div class="col-md-12 text-center">
                             <hr style="width: 50%" class="mt-0">
                             <a href="{{ route('ruang') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>

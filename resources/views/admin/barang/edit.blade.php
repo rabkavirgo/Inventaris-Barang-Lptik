@@ -1,7 +1,11 @@
-@extends('layouts.layout')
-@section('title', 'Manajemen Klasifikasi Berkas')
+@extends('admin/layouts.layout')
+@section('login_as','Administrator')
+@section('user-login')
+    {{ Auth::user()->name }}
+@endsection
+@section('title', 'LPTIK')
 @section('sidebar-menu')
-    @include('layouts.sidebar')
+    @include('admin/layouts.sidebar')
 @endsection
 @push('styles')
     <style>
@@ -66,7 +70,7 @@
                                     <option {{ $data->ruangId == "8" ? 'selected' : '' }} value="8">LABORATORIUM 3</option>
                                     <option {{ $data->ruangId == "9" ? 'selected' : '' }} value="9">LABORATORIUM 4</option>
                                     <option {{ $data->ruangId == "10" ? 'selected' : '' }} value="10">LABORATORIUM 5</option>
-                                   
+
                                 </select>
                                 <div>
                                     @if ($errors->has('ruangId'))
@@ -146,7 +150,7 @@
                                     @endif
                                 </div>
                             </div>
-                            
+
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Harga</label>
                                 <input type="text" value="{{ $data->harga }}" name="harga" class="tags form-control @error('harga') is-invalid @enderror" />
@@ -167,7 +171,7 @@
                                 </div>
                             </div>
 
-                           
+
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Masuk</label>

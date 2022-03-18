@@ -2,6 +2,13 @@
     <a href=" {{ route('pj.dashboard') }} "><i class="fa fa-dashboard"></i>Dashboard</a>
 </li>
 
+<li><a href=" {{ route('pj.barang') }}  "><i class="fa fa-history"></i>Data Barang</a>
+</li>
+
+{{-- <li>
+    <a href="{{ route('pj.laporan') }}"><i class="fa fa-download"></i>Cetak Laporan</a>
+</li> --}}
+
 
 <li style="padding-left:2px;">
     <a class="dropdown-item" href="{{ route('logout') }}"

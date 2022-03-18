@@ -24,7 +24,7 @@ class BarangController extends Controller
         $perRuang = Barang::join('ruangans','ruangans.id','barangs.ruangId')
                             ->select('namaRuangan',DB::raw('count(barangs.id) as jumlah'))
                             ->groupBy('ruangans.id')->get();
-        return view('layouts/dashboard',compact('barang','ruang','elektronik','nonelektronik','perRuang'));
+        return view('admin/layouts/dashboard',compact('barang','ruang','elektronik','nonelektronik','perRuang'));
     }
 
     public function pj(){
@@ -37,19 +37,19 @@ class BarangController extends Controller
         $perRuang = Barang::join('ruangans','ruangans.id','barangs.ruangId')
                             ->select('namaRuangan',DB::raw('count(barangs.id) as jumlah'))
                             ->groupBy('ruangans.id')->get();
-        return view('layouts/dashboardpj',compact('barang','ruang','elektronik','nonelektronik','perRuang'));
+        return view('admin/layouts/dashboardpj',compact('barang','ruang','elektronik','nonelektronik','perRuang'));
     }
 
     public function index(){
         // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
         $barangs = Barang::join('ruangans','ruangans.id','barangs.ruangId')
                             ->select('barangs.id','namaRuangan','kodeBarang','namaBarang','jenisBarang','kondisi','statusPerbaikan','merk','asalPerolehan','bahan','harga','catatan','waktuMasuk')->get();
-        return view('barang/index',compact('barangs'));
+        return view('admin/barang/index',compact('barangs'));
     }
 
     public function add(){
         $ruang = Ruangan::all();
-        return view('barang.add',compact('ruang'));
+        return view('admin/barang.add',compact('ruang'));
     }
 
     public function post(Request $request){
@@ -70,12 +70,12 @@ class BarangController extends Controller
         $barang->statusPerbaikan = false;
         $barang->save();
 
-        return redirect()->route('barang')->with(['success' => 'Data barang sudah ditambahkan !']);
+        return redirect()->route('pj.barang')->with(['success' => 'Data barang sudah ditambahkan !']);
 
     }
     public function edit($id){
         $data = Barang::where('id',$id)->first();
-        return view('barang/.edit',compact('data'));
+        return view('admin/barang/.edit',compact('data'));
     }
 
     public function update(Request $request, $id){
