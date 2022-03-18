@@ -28,10 +28,13 @@
                         <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan Penanggung Jawab !!
                     </div>
                 </div>
-                <div class="row">
+
+
+                <div class="col-md-12">
                     <form action="{{ route('pj.update',[$data->id]) }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }} {{ method_field('PATCH') }}
 
+                        <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nama Penanggung Jawab</label>
                                 <input type="text" value="{{ $data->name }}" name="name" class="tags form-control @error('name') is-invalid @enderror" />
@@ -41,7 +44,6 @@
                                     @endif
                                 </div>
                             </div>
-
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Email</label>
                                 <input type="email" value="{{ $data->email }}" name="email" class="tags form-control @error('email') is-invalid @enderror" />
@@ -51,6 +53,9 @@
                                     @endif
                                 </div>
                             </div>
+
+                        </div>
+
 
                         <div class="col-md-12 text-center">
                             <hr style="width: 50%" class="mt-0">

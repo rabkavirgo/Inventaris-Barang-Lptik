@@ -10,7 +10,7 @@
 
 
     <title>INVENTARIS | @yield('title') </title>
-    <link rel="shortcut icon" href="{{ asset('assets/images/logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/lptik.png') }}">
 
     <!-- Bootstrap -->
     <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -97,7 +97,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
                 <div class="profile_pic">
-                  <img src="{{ asset('assets/images/unib.png') }}"style="width:70%; background:#fff; margin-left:15%;z-index:1000; position:inherit;margin-top:20px;border: 1px solid rgba(52,73,94,0.44);padding: 4px;border-radius:50%;filter:drop-shadow(0px 1px 5px #fff);" alt="..." class="img-circle profile_img">
+                  <img src="{{ asset('assets/images/lptik.png') }}"style="width:70%; background:#fff; margin-left:15%;z-index:1000; position:inherit;margin-top:20px;border: 1px solid rgba(52,73,94,0.44);padding: 4px;border-radius:50%;filter:drop-shadow(0px 1px 5px #fff);" alt="..." class="img-circle profile_img">
                 </div>
                 <div class="profile_info" style="padding-top:20px;">
                     <span style="color:#fff000; font-weight:bold;">
