@@ -27,6 +27,19 @@ class BarangController extends Controller
         return view('layouts/dashboard',compact('barang','ruang','elektronik','nonelektronik','perRuang'));
     }
 
+    public function pj(){
+        // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
+        $barang = count(Barang::all());
+        $ruang = count(Ruangan::all());
+        $elektronik = count(Barang::where('jenisBarang','elektronik')->get());
+        $nonelektronik = count(Barang::where('jenisBarang','nonelektronik')->get());
+
+        $perRuang = Barang::join('ruangans','ruangans.id','barangs.ruangId')
+                            ->select('namaRuangan',DB::raw('count(barangs.id) as jumlah'))
+                            ->groupBy('ruangans.id')->get();
+        return view('layouts/dashboardpj',compact('barang','ruang','elektronik','nonelektronik','perRuang'));
+    }
+
     public function index(){
         // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
         $barangs = Barang::join('ruangans','ruangans.id','barangs.ruangId')

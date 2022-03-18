@@ -39,6 +39,7 @@ Route::get('/test', function () {
 
     Route::group(['prefix'  => 'dashboard/'],function(){
         Route::get('/',[BarangController::class, 'dashboard'])->name('barang.dashboard');
+        Route::get('/pj',[BarangController::class,'pj'])->name('barang.pj');
 
     });
 
