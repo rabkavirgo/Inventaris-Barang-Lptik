@@ -4,6 +4,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\PenanggungJawabController;
+use App\Http\Controllers\Pj\DashboardPjController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,9 +41,8 @@ Route::get('/test', function () {
     }); */
 
     Route::group(['prefix'  => 'dashboard/'],function(){
-        Route::get('/',[BarangController::class, 'dashboard'])->name('barang.dashboard');
+        Route::get('/',[BarangController::class, 'dashboard'])->name('admin.dashboard');
         Route::get('/pj',[BarangController::class,'pj'])->name('barang.pj');
-
     });
 
     Route::group(['prefix'  => 'barang/'],function(){
@@ -79,8 +79,10 @@ Route::get('/test', function () {
 
 
 
-/*
-    Route::group(['prefix' => 'barang'], function(){
-        Route::get('/','BarangController@index')->name('barang');
-        Route::post('/','BarangController@post')->name('barang.add');
+    Route::group(['prefix'  => 'penanggung_jawab/'],function(){
+        Route::get('/dashboard',[DashboardPjController::class, 'dashboard'])->name('pj.dashboard');
+
+        Route::group(['prefix'  => 'barang/'],function(){
+            Route::get('/',[DashboardPjController::class, 'dashboard'])->name('pj.barang');
+        });
     });

@@ -1,10 +1,10 @@
 @extends('layouts.layout')
-@section('login_as','Administrator')
+@section('login_as','Penanggung Jawab')
 @section('user-login')
     {{ Auth::user()->name }}
 @endsection
 @section('sidebar-menu')
-    @include('layouts.sidebar')
+    @include('layouts.sidebar_pj')
 @endsection
 @push('styles')
     <!-- Styles -->
@@ -48,7 +48,7 @@
                             <div class="small-box bg-aqua" style="margin-bottom:0px;">
                                 <div class="inner">
                                 <h3>
-                                    {{ $ruang }}
+
                                 </h3>
 
                                 <p>Jumlah Ruangan</p>
@@ -64,7 +64,7 @@
                             <div class="small-box bg-red" style="margin-bottom:0px;">
                                 <div class="inner">
                                 <h3>
-                                    {{ $barang }}
+
                                 </h3>
 
                                 <p>Jumlah Barang</p>
@@ -80,7 +80,7 @@
                             <div class="small-box bg-yellow" style="margin-bottom:0px;">
                                 <div class="inner">
                                 <h3>
-                                    {{ $elektronik }}
+
                                 </h3>
 
                                 <p>Barang Elektronik</p>
@@ -96,7 +96,7 @@
                             <div class="small-box bg-green" style="margin-bottom:0px;">
                                 <div class="inner">
                                 <h3>
-                                    {{ $nonelektronik }}
+
                                 </h3>
 
                                 <p>Barang Non Elektronik</p>
@@ -123,12 +123,12 @@
                         <div class="col-md-12">
                             @section('charts')
                                 chart.data = [
-                                    @foreach ($perRuang as $data)
+                                    {{-- @foreach ($perRuang as $data)
                                         {
                                             "country": "{{ $data['namaRuangan'] }}",
                                             "litres": {{ $data['jumlah'] }}
                                         },
-                                    @endforeach
+                                    @endforeach --}}
                                 ];
                             @endsection
                             <div id="chartdiv"></div>
@@ -148,12 +148,12 @@
                         <div class="col-md-12">
                             @section('charts2')
                                 chart.data = [
-                                    @foreach ($perRuang as $data)
+                                    {{-- @foreach ($perRuang as $data)
                                         {
                                                 "country": "{{ $data['namaRuangan'] }}",
                                             "visits": {{ $data['jumlah'] }}
                                         },
-                                    @endforeach
+                                    @endforeach --}}
                                 ];
                             @endsection
                             <div id="chartdiv2"></div>

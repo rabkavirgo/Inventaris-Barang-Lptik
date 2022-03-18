@@ -101,12 +101,12 @@
                 </div>
                 <div class="profile_info" style="padding-top:20px;">
                     <span style="color:#fff000; font-weight:bold;">
-                        {{-- @yield('login_as'), --}}
-                        Administrator
+                        @yield('login_as'),
+                        {{-- Administrator --}}
                     </span>
                   <h2>
-                    {{-- @yield('user-login') --}}
-                    Farid Muslim, S.T.
+                    @yield('user-login')
+                    {{-- Farid Muslim, S.T. --}}
                   </h2>
                 </div>
                 <div class="clearfix"></div>

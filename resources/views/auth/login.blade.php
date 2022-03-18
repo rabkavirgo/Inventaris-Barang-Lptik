@@ -13,7 +13,7 @@
 	<body>
 		<div id="particles-js">
             <div class="loginBox">
-                <img src=" {{ asset('assets/images/logo.png') }} " class="user">
+                <img src=" {{ asset('assets/images/lptik.png') }} " class="user">
                 @if ($errors->any())
                     <div class="alert alert-danger alert-block" style="font-size:13px;">
                         <ul style="margin-bottom: 0px !important">
@@ -24,12 +24,12 @@
                     </div>
                     @else
                     <h6>Silahkan Login Disini</h6>
-                    <p style="text-align:center; margin-bottom:20px;">Aplikasi E-Learning Universitas Bengkulu</p>
+                    <p style="text-align:center; margin-bottom:20px;">Aplikasi Inventaris Barang <br> LPTIK Universitas Bengkulu</p>
                 @endif
                 <form method="post" action="{{ route('login') }}">
                     @csrf
-                    <p>Username</p>
-                    <input type="text" value="{{ old('username') }}" name="username" placeholder="masukan username">
+                    <p>E-Mail</p>
+                    <input type="text" value="{{ old('email') }}" name="email" placeholder="masukan email">
                     <p>Password</p>
                     <input type="password" name="password" placeholder="••••••">
 
