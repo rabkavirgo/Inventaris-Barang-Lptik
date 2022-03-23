@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\PenanggungJawabController;
 use App\Http\Controllers\Pj\BarangPjController;
@@ -91,4 +92,13 @@ Route::get('/test', function () {
             Route::patch('update/{id}',[BarangPjController::class, 'update'])->name('pj.barang.update');
             Route::delete('/delete/{id}',[BarangPjController::class, 'delete'])->name('pj.barang.delete');
         });
+    });
+
+    Route::group(['prefix'  => 'pinjam/'],function(){
+        Route::get('/',[PeminjamanController::class, 'index'])->name('pinjam');
+        Route::get('/add',[PeminjamanController::class, 'add'])->name('pinjam.add');
+        Route::post('/post',[PeminjamanController::class, 'post'])->name('pinjam.post');
+        Route::get('{id}/edit',[PeminjamanController::class, 'edit'])->name('pinjam.edit');
+        Route::patch('update/{id}',[PeminjamanController::class, 'update'])->name('pinjam.update');
+        Route::delete('/delete/{id}',[PeminjamanController::class, 'delete'])->name('pinjam.delete');
     });
