@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class BarangController extends Controller
 {
@@ -43,7 +44,9 @@ class BarangController extends Controller
     public function index(){
         // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
         $barangs = Barang::join('ruangans','ruangans.id','barangs.ruangId')
-                            ->select('barangs.id','namaRuangan','kodeBarang','namaBarang','jenisBarang','kondisi','statusPerbaikan','merk','asalPerolehan','bahan','harga','catatan','waktuMasuk')->get();
+                            ->select('barangs.id','namaRuangan','kodeBarang','namaBarang','jenisBarang','kondisi','statusPerbaikan','merk','asalPerolehan','bahan','harga','foto','catatan','waktuMasuk')
+                            ->orderBy('id','desc')
+                            ->get();
         return view('admin/barang/index',compact('barangs'));
     }
 
@@ -54,6 +57,17 @@ class BarangController extends Controller
 
     public function post(Request $request){
     // return $request->all();
+
+
+
+    $model = $request->all();
+    $model['foto'] = null;
+
+    if ($request->hasFile('foto')) {
+        $model['foto'] = Str::slug($request->namaBarang).'-'.date('now').$request->kodeBarang.'-'.$request->jenisBarang.uniqid().'.'.$request->foto->getClientOriginalExtension();
+        $request->foto->move(public_path('/upload/foto/'), $model['foto']);
+    }
+
         $barang = new Barang;
         $barang->ruangId = $request->ruangId;
         $barang->namaBarang = $request->namaBarang;
@@ -65,12 +79,13 @@ class BarangController extends Controller
         $barang->asalPerolehan = $request->asalPerolehan;
         $barang->bahan = $request->bahan;
         $barang->harga = $request->harga;
+        $barang->foto = $model['foto'];
         $barang->catatan = $request->catatan;
         $barang->waktuMasuk = $request->waktuMasuk;
         $barang->statusPerbaikan = false;
         $barang->save();
 
-        return redirect()->route('pj.barang')->with(['success' => 'Data barang sudah ditambahkan !']);
+        return redirect()->route('barang')->with(['success' => 'Data barang sudah ditambahkan !']);
 
     }
     public function edit($id){
@@ -93,6 +108,16 @@ class BarangController extends Controller
 
         ],$messages,$attributes);
 
+            $foto = Barang::find($id);
+            $model = $request->all();
+            $model['foto'] = $foto->foto;
+            if ($request->hasFile('foto')){
+                if (!$foto->foto == NULL){
+                    unlink(public_path('/upload/foto/'.$foto->foto));
+                }
+                $model['foto'] = Str::slug($foto->namaBarang).'-'.date('now').$foto->kodeBarang.'-'.$foto->jenisBarang.uniqid().'.'.$request->foto->getClientOriginalExtension();
+                $request->foto->move(public_path('/upload/foto/'), $model['foto']);
+            }
 
             Barang::where('id',$id)->update([
 
@@ -109,6 +134,7 @@ class BarangController extends Controller
                 'harga'    =>  $request->harga,
                 'catatan'    =>  $request->catatan,
                 'waktuMasuk'    =>  $request->waktuMasuk,
+                'foto'      =>  $model['foto'],
             ]);
 
             $notification = array(

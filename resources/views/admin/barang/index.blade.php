@@ -75,9 +75,9 @@
                                 <th>Asal Perolehan</th>
                                 <th>Bahan</th>
                                 <th>Harga</th>
+                                <th>foto</th>
                                 <th>Catatan</th>
                                 <th>Waktu Masuk</th>
-
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -106,6 +106,13 @@
                                 <td> {{ $barang->asalPerolehan}}</td>
                                 <td> {{ $barang->bahan}}</td>
                                 <td> {{ $barang->harga}}</td>
+                                <td class="text-center">
+                                    @if ($barang->foto == null || $barang->foto == "")
+                                        <a style="color: red">tidak ada foto</a>
+                                    @else
+                                        <img src="{{ asset('upload/foto/'.$barang->foto) }}" width="100" alt="">
+                                    @endif
+                                </td>
                                 <td> {{ $barang->catatan}}</td>
                                 <td> {{ $barang->waktuMasuk}}</td>
                                 <td>

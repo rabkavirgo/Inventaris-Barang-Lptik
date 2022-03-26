@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Barang extends Model
-{   
+{
     protected $table = 'barangs';
     use HasFactory;
     protected $fillable=[
@@ -19,7 +19,8 @@ class Barang extends Model
 	'merk',
 	'asalPerolehan',
 	'bahan',
-	'harga' ,
+	'harga',
+    'foto',
 	'catatan',
 	'waktuMasuk',
     ];

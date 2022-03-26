@@ -171,7 +171,13 @@
                                 </div>
                             </div>
 
-
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Foto: <a class="text-danger">Harap masukan file pdf. Max : 2MB</a></label>
+                                <input type="file" name="foto" id="foto" class="fo  rm-control" style="padding-bottom:30px;">
+                                @if ($errors->has('foto'))
+                                    <small class="form-text text-danger">{{ $errors->first('foto') }}</small>
+                                @endif
+                            </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Masuk</label>

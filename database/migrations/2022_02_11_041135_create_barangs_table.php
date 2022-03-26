@@ -25,9 +25,10 @@ class CreateBarangsTable extends Migration
             $table->string('asalPerolehan');
             $table->string('bahan');
             $table->bigInteger('harga');
+            $table->string('foto')->nullable();
             $table->text('catatan');
             $table->date('waktuMasuk');
-            
+
             $table->timestamps();
         });
     }
