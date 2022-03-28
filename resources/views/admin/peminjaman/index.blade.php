@@ -35,7 +35,7 @@
                     @endif
                 </div>
                 <div class="col-md-12">
-                <a href="{{ route('barang.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
+                <a href="{{ route('pinjam.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
                  <!--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modaltambah" href="{{ route('barang.add') }}">
                         <i class="fa fa-plus"></i>&nbsp;Tambah Baru
                     </button>
@@ -91,8 +91,8 @@
                                 <td> {{ $barang->waktuPinjam}}</td>
                                 <td> {{ $barang->waktuKembali}}</td>
                                 <td>
-                                <a href="{{ route('barang.edit',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                                <form action="{{ route('barang.delete',[$barang->id]) }}" method="POST">
+                                <a href="{{ route('pinjam.edit',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                <form action="{{ route('pinjam.delete',[$barang->id]) }}" method="POST">
                                         {{ csrf_field() }} {{ method_field("DELETE") }}
 
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>
