@@ -13,6 +13,9 @@
 <li><a href=" {{ route('barang') }}  "><i class="fa fa-history"></i>Data Barang</a>
 
 </li>
+<li><a href=" {{ route('perbaikan') }}  "><i class="fa fa-history"></i>Perbaikan</a>
+
+</li>
 <li><a href=" {{ route('pinjam') }}  "><i class="fa fa-history"></i>Peminjaman</a>
 
 </li>

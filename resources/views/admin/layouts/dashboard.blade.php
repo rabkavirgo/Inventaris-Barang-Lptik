@@ -3,6 +3,7 @@
 @section('user-login')
     {{ Auth::user()->name }}
 @endsection
+@section('title', 'LPTIK')
 @section('sidebar-menu')
     @include('admin/layouts.sidebar')
 @endsection

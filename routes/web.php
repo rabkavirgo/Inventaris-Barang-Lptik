@@ -5,6 +5,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\PenanggungJawabController;
+use App\Http\Controllers\PerbaikanController;
 use App\Http\Controllers\Pj\BarangPjController;
 use App\Http\Controllers\Pj\DashboardPjController;
 use Illuminate\Support\Facades\Auth;
@@ -102,3 +103,13 @@ Route::get('/test', function () {
         Route::patch('update/{id}',[PeminjamanController::class, 'update'])->name('pinjam.update');
         Route::delete('/delete/{id}',[PeminjamanController::class, 'delete'])->name('pinjam.delete');
     });
+
+    Route::group(['prefix'  => 'perbaikan/'],function(){
+        Route::get('/',[PerbaikanController::class, 'index'])->name('perbaikan');
+        Route::get('/add',[PerbaikanController::class, 'add'])->name('perbaikan.add');
+        Route::post('/post',[PerbaikanController::class, 'post'])->name('perbaikan.post');
+        Route::get('{id}/edit',[PerbaikanController::class, 'edit'])->name('perbaikan.edit');
+        Route::patch('update/{id}',[PerbaikanController::class, 'update'])->name('perbaikan.update');
+        Route::delete('/delete/{id}',[PerbaikanController::class, 'delete'])->name('perbaikan.delete');
+    });
+

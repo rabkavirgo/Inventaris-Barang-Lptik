@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-        <title>E-learning Unib | Login</title>
+        <title>INVENTARIS | Login</title>
         <link rel="icon" href="{{ asset('assets/images/logo.png') }}">
         {{-- <link rel="shortcut icon" href="{{ asset('assets/images/logo.png') }}"> --}}
         <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
