@@ -93,7 +93,7 @@
                                         <a style="color: red"><i class="fa fa-close"></i>&nbsp; Sudah ada perbaikan</a>
                                     @endif
                                     <hr>
-                                    <a href="{{ route('barang.riwayat',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp; Riwayat Perbaikan</a>
+                                    <a href="{{ route('barang.riwayat.add',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp; Riwayat Perbaikan</a>
                                 </td>
                                 <td>
                                 <a href="{{ route('barang.edit',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
