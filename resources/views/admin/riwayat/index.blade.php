@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-12">
                 <a href="{{ route('pinjam.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
-                 <!--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modaltambah" href="{{ route('barang.add') }}">
+                 <!--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modaltambah" href="{{ route('riwayat.add') }}">
                         <i class="fa fa-plus"></i>&nbsp;Tambah Baru
                     </button>
                 -->
@@ -48,13 +48,13 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-list"></i>&nbsp; Tambah Data Barang
+                                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-list"></i>&nbsp; Tambah Data riwayat
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                                 </h5>
                             </div>
-                            <form action="{{ route('barang.add') }}" method="POST">
+                            <form action="{{ route('riwayat.add') }}" method="POST">
                                 {{ csrf_field() }} {{ method_field('POST') }}
                             </form>
                         </div>
@@ -66,7 +66,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Barang</th>
+                                <th>Nama riwayat</th>
                                 <th>Catatan</th>
                                 <th>Tanggal</th>
                                 <th>Tempat</th>
@@ -78,16 +78,16 @@
                             @php
                                 $no=1;
                             @endphp
-                            @foreach ($perbaikans as $barang)
+                            @foreach ($riwayats as $riwayat)
                             <tr>
                                 <td> {{ $no++}} </td>
-                                <td> {{ $barang->namaBarang}}</td>
-                                <td> {{ $barang->keterangan}}</td>
-                                <td> {{ $barang->tanggal}}</td>
-                                <td> {{ $barang->tempat}}</td>
+                                <td> {{ $riwayat->namariwayat}}</td>
+                                <td> {{ $riwayat->keterangan}}</td>
+                                <td> {{ $riwayat->tanggal}}</td>
+                                <td> {{ $riwayat->tempat}}</td>
                                 <td>
-                                <a href="{{ route('pinjam.edit',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                                <form action="{{ route('pinjam.delete',[$barang->id]) }}" method="POST">
+                                <a href="{{ route('pinjam.edit',[$riwayat->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                <form action="{{ route('pinjam.delete',[$riwayat->id]) }}" method="POST">
                                         {{ csrf_field() }} {{ method_field("DELETE") }}
 
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>

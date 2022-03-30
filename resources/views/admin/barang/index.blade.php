@@ -69,7 +69,7 @@
                                 <th>Nama Barang</th>
                                 <th>Ruangan</th>
                                 <th>Kondisi</th>
-                                <th>Status Perbaikan</th>
+                                <th style="text-align:center">Status Perbaikan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -86,12 +86,14 @@
                                     {{ $barang->namaRuangan }}
                                 </td>
                                 <td> {{ $barang->kondisi}}</td>
-                                <td>
+                                <td style="text-align:center">
                                     @if ($barang->statusPerbaikan == "0")
                                         <a style="color: green"><i class="fa fa-check-circle"></i>&nbsp; Belum ada perbaikan</a>
                                         @else
                                         <a style="color: red"><i class="fa fa-close"></i>&nbsp; Sudah ada perbaikan</a>
                                     @endif
+                                    <hr>
+                                    <a href="{{ route('barang.riwayat',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp; Riwayat Perbaikan</a>
                                 </td>
                                 <td>
                                 <a href="{{ route('barang.edit',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>

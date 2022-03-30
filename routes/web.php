@@ -5,6 +5,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\PenanggungJawabController;
+use App\Http\Controllers\StatusPerbaikanController;
 use App\Http\Controllers\PerbaikanController;
 use App\Http\Controllers\Pj\BarangPjController;
 use App\Http\Controllers\Pj\DashboardPjController;
@@ -56,6 +57,15 @@ Route::get('/test', function () {
         Route::patch('update/{id}',[BarangController::class, 'update'])->name('barang.update');
         Route::delete('/delete/{id}',[BarangController::class, 'delete'])->name('barang.delete');
         Route::get('{id}/detail',[BarangController::class, 'detail'])->name('barang.detail');
+
+        Route::group(['prefix'  => 'riwayat_perbaikan/'],function(){
+            Route::get('{id}/',[StatusPerbaikanController::class, 'index'])->name('barang.riwayat');
+            Route::get('/add',[StatusPerbaikanController::class, 'add'])->name('barang.riwayat.add');
+            Route::post('/post',[StatusPerbaikanController::class, 'post'])->name('barang.riwayat.post');
+            Route::get('{id}/edit',[StatusPerbaikanController::class, 'edit'])->name('barang.riwayat.edit');
+            Route::patch('update/{id}',[StatusPerbaikanController::class, 'update'])->name('barang.riwayat.update');
+            Route::delete('/delete/{id}',[StatusPerbaikanController::class, 'delete'])->name('barang.riwayat.delete');
+        });
     });
 
     Route::group(['prefix'  => 'ruang/'],function(){
