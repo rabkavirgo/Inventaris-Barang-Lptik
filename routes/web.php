@@ -115,12 +115,12 @@ Route::get('/test', function () {
         Route::delete('/delete/{id}',[PeminjamanController::class, 'delete'])->name('pinjam.delete');
     });
 
-    Route::group(['prefix'  => 'perbaikan/'],function(){
-        Route::get('/',[PerbaikanController::class, 'index'])->name('perbaikan');
-        Route::get('/add',[PerbaikanController::class, 'add'])->name('perbaikan.add');
-        Route::post('/post',[PerbaikanController::class, 'post'])->name('perbaikan.post');
-        Route::get('{id}/edit',[PerbaikanController::class, 'edit'])->name('perbaikan.edit');
-        Route::patch('update/{id}',[PerbaikanController::class, 'update'])->name('perbaikan.update');
-        Route::delete('/delete/{id}',[PerbaikanController::class, 'delete'])->name('perbaikan.delete');
+    Route::group(['prefix'  => 'riwayat/'],function(){
+        Route::get('/',[PerbaikanController::class, 'index'])->name('riwayat');
+        Route::get('/add',[PerbaikanController::class, 'add'])->name('riwayat.add');
+        Route::post('/post',[PerbaikanController::class, 'post'])->name('riwayat.post');
+        Route::get('{id}/edit',[PerbaikanController::class, 'edit'])->name('riwayat.edit');
+        Route::patch('update/{id}',[PerbaikanController::class, 'update'])->name('riwayat.update');
+        Route::delete('/delete/{id}',[PerbaikanController::class, 'delete'])->name('riwayat.delete');
     });
 

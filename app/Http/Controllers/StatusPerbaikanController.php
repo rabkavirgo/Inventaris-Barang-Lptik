@@ -12,7 +12,9 @@ class StatusPerbaikanController extends Controller
     public function index($id){
         // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
         $riwayats = Riwayat::where('barangId',$id)->get();
-        return view('admin/riwayat/index',compact('riwayats'));
+        $riwayats = Riwayat::join('barangs','barangs.id','riwayats.barangId')
+                            ->select('riwayats.id','keterangan','tanggal','tempat','namaBarang','jenisBarang')->get();
+        return view('admin/barang/riwayat/index',compact('riwayats'));
     }
 
     public function add(){

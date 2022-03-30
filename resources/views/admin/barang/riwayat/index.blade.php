@@ -35,7 +35,7 @@
                     @endif
                 </div>
                 <div class="col-md-12">
-                <a href="{{ route('pinjam.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
+                <a href="{{ route('barang.riwayat.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
                  <!--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modaltambah" href="{{ route('riwayat.add') }}">
                         <i class="fa fa-plus"></i>&nbsp;Tambah Baru
                     </button>
@@ -66,7 +66,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama riwayat</th>
+                                <th>Nama Riwayat</th>
                                 <th>Catatan</th>
                                 <th>Tanggal</th>
                                 <th>Tempat</th>
@@ -81,7 +81,7 @@
                             @foreach ($riwayats as $riwayat)
                             <tr>
                                 <td> {{ $no++}} </td>
-                                <td> {{ $riwayat->namariwayat}}</td>
+                                <td> {{ $riwayat->namaBarang}}</td>
                                 <td> {{ $riwayat->keterangan}}</td>
                                 <td> {{ $riwayat->tanggal}}</td>
                                 <td> {{ $riwayat->tempat}}</td>

@@ -93,7 +93,7 @@
                                         <a style="color: red"><i class="fa fa-close"></i>&nbsp; Sudah ada perbaikan</a>
                                     @endif
                                     <hr>
-                                    <a href="{{ route('barang.riwayat.add',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp; Riwayat Perbaikan</a>
+                                    <a href="{{ route('barang.riwayat',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp; Riwayat Perbaikan</a>
                                 </td>
                                 <td>
                                 <a href="{{ route('barang.edit',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
@@ -131,6 +131,42 @@
                                         <td id="kodeBarang"></td>
                                     </tr>
                                     <tr>
+                                        <th style="max-width:100px !important;">Jenis Barang :</th>
+                                        <td id="jenisBarang"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="max-width:100px !important;">Kondisi :</th>
+                                        <td id="kondisi"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="max-width:100px !important;">Status Perbaikan :</th>
+                                        <td id="statusPerbaikan"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="max-width:100px !important;">Merk :</th>
+                                        <td id="merk"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="max-width:100px !important;">Asal Perolehan :</th>
+                                        <td id="asalPerolehan"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="max-width:100px !important;">Bahan :</th>
+                                        <td id="bahan"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="max-width:100px !important;">Harga :</th>
+                                        <td id="harga"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="max-width:100px !important;">Catatan :</th>
+                                        <td id="catatan"></td>
+                                    </tr>
+                                 <tr>
+                                        <th style="max-width:100px !important;">Waktu Masuk :</th>
+                                        <td id="waktuMasuk"></td>
+                                    </tr>
+                                    <tr>
                                         <th style="max-width:100px !important;">Foto Barang :</th>
                                         <td>
                                             <img src="" id="foto" alt="" style="max-width:100px">
@@ -166,6 +202,15 @@
                     $('#modalDetail').modal('show');
                     $('#namaBarang').text(data.namaBarang);
                     $('#kodeBarang').text(data.kodeBarang);
+                    $('#jenisBarang').text(data.jenisBarang);
+                    $('#kondisi').text(data.kondisi);
+                    $('#statusPerbaikan').text(data.statusPerbaikan);
+                    $('#merk').text(data.merk);
+                    $('#asalPerolehan').text(data.asalPerolehan);
+                    $('#bahan').text(data.bahan);
+                    $('#harga').text(data.harga);
+                    $('#catatan').text(data.catatan);
+                    $('#waktuMasuk').date(data.waktuMasuk);
                     $('#foto').attr("src", "upload/foto/"+data.foto);
                 },
                 error:function(){

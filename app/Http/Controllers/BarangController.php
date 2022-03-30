@@ -47,6 +47,7 @@ class BarangController extends Controller
                             ->select('barangs.id','namaRuangan','kodeBarang','namaBarang','jenisBarang','kondisi','statusPerbaikan','merk','asalPerolehan','bahan','harga','foto','catatan','waktuMasuk')
                             ->orderBy('id','desc')
                             ->get();
+
         return view('admin/barang/index',compact('barangs'));
     }
 
