@@ -28,7 +28,6 @@ class CreateBarangsTable extends Migration
             $table->string('foto')->nullable();
             $table->text('catatan');
             $table->date('waktuMasuk');
-
             $table->timestamps();
         });
     }

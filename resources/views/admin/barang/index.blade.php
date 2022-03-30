@@ -68,16 +68,8 @@
                                 <th>No</th>
                                 <th>Nama Barang</th>
                                 <th>Ruangan</th>
-                                <th>Jenis Barang</th>
                                 <th>Kondisi</th>
                                 <th>Status Perbaikan</th>
-                                <th>Merk</th>
-                                <th>Asal Perolehan</th>
-                                <th>Bahan</th>
-                                <th>Harga</th>
-                                <th>foto</th>
-                                <th>Catatan</th>
-                                <th>Waktu Masuk</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -93,7 +85,6 @@
                                 <td>
                                     {{ $barang->namaRuangan }}
                                 </td>
-                                <td> {{ $barang->jenisBarang}}</td>
                                 <td> {{ $barang->kondisi}}</td>
                                 <td>
                                     @if ($barang->statusPerbaikan == "0")
@@ -102,21 +93,9 @@
                                         <a style="color: red"><i class="fa fa-close"></i>&nbsp; Sudah ada perbaikan</a>
                                     @endif
                                 </td>
-                                <td> {{ $barang->merk}}</td>
-                                <td> {{ $barang->asalPerolehan}}</td>
-                                <td> {{ $barang->bahan}}</td>
-                                <td> {{ $barang->harga}}</td>
-                                <td class="text-center">
-                                    @if ($barang->foto == null || $barang->foto == "")
-                                        <a style="color: red">tidak ada foto</a>
-                                    @else
-                                        <img src="{{ asset('upload/foto/'.$barang->foto) }}" width="100" alt="">
-                                    @endif
-                                </td>
-                                <td> {{ $barang->catatan}}</td>
-                                <td> {{ $barang->waktuMasuk}}</td>
                                 <td>
                                 <a href="{{ route('barang.edit',[$barang->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                <a onclick="detail({{ $barang->id }})" class="btn btn-success btn-sm" style="color:white;cursor: pointer;"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>
                                 <form action="{{ route('barang.delete',[$barang->id]) }}" method="POST">
                                         {{ csrf_field() }} {{ method_field("DELETE") }}
 
@@ -129,6 +108,25 @@
                         </tbody>
 
                     </table>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <p class="modal-title" id="exampleModalLabel">Informasi Detail Barang</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            ...
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Tutup</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -141,5 +139,9 @@
                 responsive : true,
             });
         } );
+
+        function detail(id){
+            $('#modalDetail').modal('show');
+        }
     </script>
 @endpush
