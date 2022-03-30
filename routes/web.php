@@ -55,6 +55,7 @@ Route::get('/test', function () {
         Route::get('{id}/edit',[BarangController::class, 'edit'])->name('barang.edit');
         Route::patch('update/{id}',[BarangController::class, 'update'])->name('barang.update');
         Route::delete('/delete/{id}',[BarangController::class, 'delete'])->name('barang.delete');
+        Route::get('{id}/detail',[BarangController::class, 'detail'])->name('barang.detail');
     });
 
     Route::group(['prefix'  => 'ruang/'],function(){

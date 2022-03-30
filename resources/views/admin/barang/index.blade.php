@@ -119,7 +119,22 @@
                             </button>
                             </div>
                             <div class="modal-body">
-                            ...
+                                <table class="table table-striped table-bordered table-hover">
+                                    <tr>
+                                        <th style="max-width:100px !important;">Nama Barang :</th>
+                                        <td id="namaBarang"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="max-width:100px !important;">Kode Barang :</th>
+                                        <td id="kodeBarang"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="max-width:100px !important;">Foto Barang :</th>
+                                        <td>
+                                            <img src="" id="foto" alt="" style="max-width:100px">
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Tutup</button>
@@ -141,7 +156,20 @@
         } );
 
         function detail(id){
-            $('#modalDetail').modal('show');
+            $.ajax({
+                url: "{{ url('barang') }}"+'/'+ id + "/detail",
+                type: "GET",
+                dataType: "JSON",
+                success: function(data){
+                    $('#modalDetail').modal('show');
+                    $('#namaBarang').text(data.namaBarang);
+                    $('#kodeBarang').text(data.kodeBarang);
+                    $('#foto').attr("src", "upload/foto/"+data.foto);
+                },
+                error:function(){
+                    alert("Nothing Data");
+                }
+            });
         }
     </script>
 @endpush

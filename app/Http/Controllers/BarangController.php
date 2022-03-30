@@ -152,4 +152,10 @@ class BarangController extends Controller
         );
         return redirect()->route('barang')->with($notification);
     }
+
+    public function detail($id){
+        $barang = Barang::join('ruangans', 'ruangans.id','barangs.ruangId')
+                        ->where('barangs.id', $id)->first();
+        return $barang;
+    }
 }
