@@ -12,7 +12,7 @@
 @section('content')
     <section class="panel" style="margin-bottom:20px;">
         <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
-            <i class="fa fa-home"></i>&nbsp;Sistem Inventaris LPTIK UNIB
+            <i class="fa fa-home"></i>&nbsp;Sistem Inventaris
         </header>
         <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
             <div class="row" style="margin-right:-15px; margin-left:-15px;">
@@ -34,43 +34,71 @@
                             </div>
                     @endif
                 </div>
+
                 <div class="col-md-12">
-                <a href="{{ route('barang.riwayat.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
-                 <!--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modaltambah" href="{{ route('riwayat.add') }}">
-                        <i class="fa fa-plus"></i>&nbsp;Tambah Baru
-                    </button>
-                -->
+                    <form action="{{ route('barang.riwayat.post',[$id]) }}" enctype="multipart/form-data" method="POST">
+                        {{ csrf_field() }} {{ method_field('POST') }}
+
+
+
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Nama Barang</label>
+                                <input type="text" name="namaRiwayat" value="{{ $barang->namaBarang }}" disabled class="tags form-control @error('keterangan') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('barangId'))
+                                        <small class="form-text text-danger">{{ $errors->first('barangId') }}</small>
+                                    @endif
+                                </div>
+                            </div>
+
+
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Catatan</label>
+                                <input type="text" name="keterangan" class="tags form-control @error('keterangan') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('keterangan'))
+                                        <small class="form-text text-danger">{{ $errors->first('keterangan') }}</small>
+                                    @endif
+                                </div>
+                            </div>
+
+
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Tanggal</label>
+                                <input type="date" name="tanggal" id="date" class="tags form-control @error('waktuMasuk') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('waktuKembali'))
+                                        <small class="form-text text-danger">{{ $errors->first('waktuKembali') }}</small>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Tempat</label>
+                                <input type="text" name="tempat" class="tags form-control @error('keterangan') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('keterangan'))
+                                        <small class="form-text text-danger">{{ $errors->first('keterangan') }}</small>
+                                    @endif
+                                </div>
+                            </div>
+
+                        <div class="col-md-12 text-center">
+                            <hr style="width: 50%" class="mt-0">
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i>&nbsp;Simpan Data</button>
+                        </div>
+                    </form>
                 </div>
 
-                <!-- modal tambah -->
-                <!--
-                <div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="exampleModelLabel" arie-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-list"></i>&nbsp; Tambah Data riwayat
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </h5>
-                            </div>
-                            <form action="{{ route('riwayat.add') }}" method="POST">
-                                {{ csrf_field() }} {{ method_field('POST') }}
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                -->
+
                 <div class="col-md-12 table-responsive">
                     <table class="table table-striped table-bordered" id="table" style="width:100%;">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Riwayat</th>
+                                <th>Nama Barang</th>
                                 <th>Catatan</th>
                                 <th>Tanggal</th>
                                 <th>Tempat</th>
-
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -86,8 +114,7 @@
                                 <td> {{ $riwayat->tanggal}}</td>
                                 <td> {{ $riwayat->tempat}}</td>
                                 <td>
-                                <a href="{{ route('pinjam.edit',[$riwayat->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                                <form action="{{ route('pinjam.delete',[$riwayat->id]) }}" method="POST">
+                                <form action="{{ route('barang.riwayat.delete',[$riwayat->id]) }}" method="POST">
                                         {{ csrf_field() }} {{ method_field("DELETE") }}
 
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>

@@ -5,6 +5,12 @@
 <li><a href=" {{ route('pj.barang') }}  "><i class="fa fa-history"></i>Data Barang</a>
 </li>
 
+<li><a href=" {{ route('pj.peminjaman') }}  "><i class="fa fa-history"></i>Peminjaman</a>
+</li>
+
+<li><a href=" {{ route('pj.laporan') }}  "><i class="fa fa-history"></i>Laporan</a>
+</li>
+
 {{-- <li>
     <a href="{{ route('pj.laporan') }}"><i class="fa fa-download"></i>Cetak Laporan</a>
 </li> --}}

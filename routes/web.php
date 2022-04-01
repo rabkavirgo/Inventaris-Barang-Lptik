@@ -3,11 +3,14 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PeminjamanController;
+
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\PenanggungJawabController;
 use App\Http\Controllers\StatusPerbaikanController;
 use App\Http\Controllers\PerbaikanController;
+use App\Http\Controllers\Pj\LaporanPjController;
 use App\Http\Controllers\Pj\BarangPjController;
+use App\Http\Controllers\Pj\PeminjamanPjController;
 use App\Http\Controllers\Pj\DashboardPjController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -60,10 +63,7 @@ Route::get('/test', function () {
 
         Route::group(['prefix'  => 'riwayat_perbaikan/'],function(){
             Route::get('{id}/',[StatusPerbaikanController::class, 'index'])->name('barang.riwayat');
-            Route::get('/add',[StatusPerbaikanController::class, 'add'])->name('barang.riwayat.add');
-            Route::post('/post',[StatusPerbaikanController::class, 'post'])->name('barang.riwayat.post');
-            Route::get('{id}/edit',[StatusPerbaikanController::class, 'edit'])->name('barang.riwayat.edit');
-            Route::patch('update/{id}',[StatusPerbaikanController::class, 'update'])->name('barang.riwayat.update');
+            Route::post('/post/{id}',[StatusPerbaikanController::class, 'post'])->name('barang.riwayat.post');
             Route::delete('/delete/{id}',[StatusPerbaikanController::class, 'delete'])->name('barang.riwayat.delete');
         });
     });
@@ -104,6 +104,19 @@ Route::get('/test', function () {
             Route::patch('update/{id}',[BarangPjController::class, 'update'])->name('pj.barang.update');
             Route::delete('/delete/{id}',[BarangPjController::class, 'delete'])->name('pj.barang.delete');
         });
+        Route::group(['prefix'  => 'peminjaman/'],function(){
+            Route::get('/',[PeminjamanPjController::class, 'index'])->name('pj.peminjaman');
+            Route::get('/add',[PeminjamanPjController::class, 'add'])->name('pj.peminjaman.add');
+            Route::post('/post',[PeminjamanPjController::class, 'post'])->name('pj.peminjaman.post');
+            Route::get('{id}/edit',[PeminjamanPjController::class, 'edit'])->name('pj.peminjaman.edit');
+            Route::patch('update/{id}',[PeminjamanPjController::class, 'update'])->name('pj.peminjaman.update');
+            Route::delete('/delete/{id}',[PeminjamanPjController::class, 'delete'])->name('pj.peminjaman.delete');
+        });
+        Route::group(['prefix'  => 'laporan/'],function(){
+            Route::get('/',[LaporanPjController::class, 'index'])->name('pj.laporan');
+            Route::post('/cari',[LaporanPjController::class, 'cari'])->name('pj.laporan.cari');
+        });
+
     });
 
     Route::group(['prefix'  => 'pinjam/'],function(){
@@ -113,14 +126,5 @@ Route::get('/test', function () {
         Route::get('{id}/edit',[PeminjamanController::class, 'edit'])->name('pinjam.edit');
         Route::patch('update/{id}',[PeminjamanController::class, 'update'])->name('pinjam.update');
         Route::delete('/delete/{id}',[PeminjamanController::class, 'delete'])->name('pinjam.delete');
-    });
-
-    Route::group(['prefix'  => 'riwayat/'],function(){
-        Route::get('/',[PerbaikanController::class, 'index'])->name('riwayat');
-        Route::get('/add',[PerbaikanController::class, 'add'])->name('riwayat.add');
-        Route::post('/post',[PerbaikanController::class, 'post'])->name('riwayat.post');
-        Route::get('{id}/edit',[PerbaikanController::class, 'edit'])->name('riwayat.edit');
-        Route::patch('update/{id}',[PerbaikanController::class, 'update'])->name('riwayat.update');
-        Route::delete('/delete/{id}',[PerbaikanController::class, 'delete'])->name('riwayat.delete');
     });
 

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
         <title>INVENTARIS | Login</title>
-        <link rel="icon" href="{{ asset('assets/images/logo.png') }}">
+        {{-- <link rel="icon" href="{{ asset('assets/images/logo.png') }}"> --}}
         {{-- <link rel="shortcut icon" href="{{ asset('assets/images/logo.png') }}"> --}}
         <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
         <link rel="stylesheet" href=" {{ asset('css/style_login.css') }} ">
@@ -13,7 +13,7 @@
 	<body>
 		<div id="particles-js">
             <div class="loginBox">
-                <img src=" {{ asset('assets/images/lptik.png') }} " class="user">
+                {{-- <img src=" {{ asset('assets/images/lptik.png') }} " class="user"> --}}
                 @if ($errors->any())
                     <div class="alert alert-danger alert-block" style="font-size:13px;">
                         <ul style="margin-bottom: 0px !important">
@@ -24,7 +24,8 @@
                     </div>
                     @else
                     <h6>Silahkan Login Disini</h6>
-                    <p style="text-align:center; margin-bottom:20px;">Aplikasi Inventaris Barang <br> LPTIK Universitas Bengkulu</p>
+                    <p style="text-align:center; margin-bottom:20px;">Aplikasi Inventaris Barang <br>
+                        {{-- LPTIK Universitas Bengkulu</p> --}}
                 @endif
                 <form method="post" action="{{ route('login') }}">
                     @csrf

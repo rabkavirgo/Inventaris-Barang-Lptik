@@ -9,8 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>INVENTARIS | @yield('title') </title>
-    <link rel="shortcut icon" href="{{ asset('assets/images/lptik.png') }}">
+    <title>INVENTARIS | @yield('') </title>
+    {{-- <link rel="shortcut icon" href="{{ asset('assets/images/lptik.png') }}"> --}}
 
     <!-- Bootstrap -->
     <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -97,7 +97,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
                 <div class="profile_pic">
-                  <img src="{{ asset('assets/images/lptik.png') }}"style="width:70%; background:#fff; margin-left:15%;z-index:1000; position:inherit;margin-top:20px;border: 1px solid rgba(52,73,94,0.44);padding: 4px;border-radius:50%;filter:drop-shadow(0px 1px 5px #fff);" alt="..." class="img-circle profile_img">
+                  {{-- <img src="{{ asset('assets/images/lptik.png') }}"style="width:70%; background:#fff; margin-left:15%;z-index:1000; position:inherit;margin-top:20px;border: 1px solid rgba(52,73,94,0.44);padding: 4px;border-radius:50%;filter:drop-shadow(0px 1px 5px #fff);" alt="..." class="img-circle profile_img"> --}}
                 </div>
                 <div class="profile_info" style="padding-top:20px;">
                     <span style="color:#fff000; font-weight:bold;">
@@ -127,7 +127,7 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small" style="background:#172D44;">
-                <p style="color:white;text-align:center; margin-bottom:0px; padding:5px;">LPTIK UNIB</p>
+                {{-- <p style="color:white;text-align:center; margin-bottom:0px; padding:5px;">LPTIK UNIB</p> --}}
             </div>
             <!-- /menu footer buttons -->
           </div>

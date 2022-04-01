@@ -7,7 +7,7 @@
 @section('title', 'LPTIK')
 
 @section('sidebar-menu')
-    @include('admin/layouts.sidebar')
+    @include('pj/layouts.sidebar_pj')
 @endsection
 @push('styles')
     <!-- Styles -->
@@ -43,7 +43,7 @@
                     @endif
                 </div>
                 <div class="col-md-12">
-                    <form action="{{ route('laporan.cari') }}" method="post">
+                    <form action="{{ route('pj.laporan.cari') }}" method="post">
                         {{ csrf_field() }} {{ method_field('POST') }}
                         <div class="row">
                             <div class="form-group col-md-12">

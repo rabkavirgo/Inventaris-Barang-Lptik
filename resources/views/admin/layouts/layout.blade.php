@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>INVENTARIS | @yield('title') </title>
+    <title>INVENTARIS |@yield('') </title>
     <link rel="shortcut icon" href="{{ asset('assets/images/lptik.png') }}">
 
     <!-- Bootstrap -->
@@ -90,14 +90,15 @@
         @endif
         <div class="left_col scroll-view" style="background: #013C62 !important;">
             <div class="navbar nav_title" style="border-bottom: 1px white solid; padding-bottom:5px 0px !important; background:#013C62;">
-                <a href="index.html" class="site_title" style="font-weight:600; font-size:16px"> <span>INVENTARIS LPTIK</span></a>
+                <a href="index.html" class="site_title" style="font-weight:600; font-size:16px">
+                    <span>INVENTARIS </span></a>
               </div>
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
                 <div class="profile_pic">
-                  <img src="{{ asset('assets/images/lptik.png') }}"style="width:70%; background:#fff; margin-left:15%;z-index:1000; position:inherit;margin-top:20px;border: 1px solid rgba(52,73,94,0.44);padding: 4px;border-radius:50%;filter:drop-shadow(0px 1px 5px #fff);" alt="..." class="img-circle profile_img">
+                  {{-- <img src="{{ asset('assets/images/lptik.png') }}"style="width:70%; background:#fff; margin-left:15%;z-index:1000; position:inherit;margin-top:20px;border: 1px solid rgba(52,73,94,0.44);padding: 4px;border-radius:50%;filter:drop-shadow(0px 1px 5px #fff);" alt="..." class="img-circle profile_img"> --}}
                 </div>
                 <div class="profile_info" style="padding-top:20px;">
                     <span style="color:#fff000; font-weight:bold;">
@@ -127,7 +128,7 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small" style="background:#172D44;">
-                <p style="color:white;text-align:center; margin-bottom:0px; padding:5px;">LPTIK UNIB</p>
+                {{-- <p style="color:white;text-align:center; margin-bottom:0px; padding:5px;">LPTIK UNIB</p> --}}
             </div>
             <!-- /menu footer buttons -->
           </div>

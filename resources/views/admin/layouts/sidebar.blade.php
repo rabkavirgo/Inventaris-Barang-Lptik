@@ -18,7 +18,7 @@
 </li>
 
 <li>
-    <a href="{{ route('laporan') }}"><i class="fa fa-download"></i>Cetak Laporan</a>
+    <a href="{{ route('laporan') }}"><i class="fa fa-download"></i>Laporan</a>
 </li>
 
 <li style="padding-left:2px;">

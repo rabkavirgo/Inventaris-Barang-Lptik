@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Riwayat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,25 +12,27 @@ class StatusPerbaikanController extends Controller
 {
     public function index($id){
         // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
-        $riwayats = Riwayat::where('barangId',$id)->get();
+        $barang = Barang::where('id',$id)->first();
         $riwayats = Riwayat::join('barangs','barangs.id','riwayats.barangId')
-                            ->select('riwayats.id','keterangan','tanggal','tempat','namaBarang','jenisBarang')->get();
-        return view('admin/barang/riwayat/index',compact('riwayats'));
+                            ->select('riwayats.id','tanggal','tanggal','tempat','namaBarang','keterangan')
+                            ->where('barangId',$id)
+                            ->get();
+        return view('admin/barang/riwayat/index',compact('riwayats','barang','id'));
     }
 
     public function add(){
         return view('admin/riwayat.add');
     }
 
-    public function post(Request $request){
+    public function post(Request $request, $id){
         // return $request->all();
         Riwayat::create([
-            'name'  =>  $request->name,
-            'email'  =>  $request->email,
-            'password'  =>  bcrypt("password"),
-            'role'  =>  'riwayat',
+            'barangId'  =>  $id,
+            'keterangan'  =>  $request->keterangan,
+            'tanggal'  =>  $request->tanggal,
+            'tempat'  =>  $request->tempat,
         ]);
-            return redirect()->route('riwayat')->with(['success' => 'Data penanggung jawab sudah ditambahkan !']);
+                return redirect()->route('barang.riwayat',[$id])->with(['success' => 'riwayat perbaikan sudah ditambahkan !']);
     }
 
     public function edit($id){

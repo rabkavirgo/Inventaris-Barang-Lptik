@@ -31,7 +31,7 @@
     </header>
     <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
         <div class="row" style="margin-right:-15px; margin-left:-15px;">
-            <div class="col-md-12">Selamat datang di<b> SISTEM INVENTARIS LPTIK UNIB</b></div>
+            <div class="col-md-12">Selamat datang di<b> SISTEM INVENTARIS </b></div>
         </div>
     </div>
 </section>
@@ -57,7 +57,7 @@
                                 <div class="icon">
                                 <i class="fa fa-list"></i>
                                 </div>
-                                <a href="{{ route('ruang') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="{{ route('pj') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-xs-3 col-md-3" style="padding-bottom:10px !important;">
@@ -73,7 +73,7 @@
                                 <div class="icon">
                                 <i class="fa fa-list-alt"></i>
                                 </div>
-                                <a href="{{ route('barang') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="{{ route('pj.barang') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-xs-3 col-md-3" style="padding-bottom:10px !important;">

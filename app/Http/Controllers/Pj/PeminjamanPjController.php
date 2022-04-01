@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pj;
 
+use App\Http\Controllers\Controller;
 
 use App\Models\Barang;
 use App\Models\Pinjam;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
-class PeminjamanController extends Controller
+class PeminjamanPjController extends Controller
 {
     public function index(){
         // $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
         $pinjams = Pinjam::join('barangs','barangs.id','pinjams.barangId')
                             ->select('pinjams.id','namaBarang','nik','peminjam','keterangan','waktuPinjam','waktuKembali')->get();
-        return view('admin/peminjaman/index',compact('pinjams'));
+        return view('pj/peminjaman/index',compact('pinjams'));
     }
 
     public function add(){
@@ -25,7 +26,7 @@ class PeminjamanController extends Controller
                             ->get();
         $pj = Ruangan::all();
         $barang = Barang::all();
-        return view('admin/peminjaman.add',compact('barang','barangs','pj'));
+        return view('pj/peminjaman.add',compact('barang','barangs','pj'));
     }
 
     public function post(Request $request){
@@ -40,14 +41,14 @@ class PeminjamanController extends Controller
 
             $pinjam->save();
 
-            return redirect()->route('pinjam')->with(['success' => 'Data Ruangan sudah ditambahkan !']);
+            return redirect()->route('pj.peminjaman')->with(['success' => 'Data Ruangan sudah ditambahkan !']);
 
      }
 
      public function edit($id){
         $data = Pinjam::where('id',$id)->first();
         $barang = Barang::all();
-        return view('admin/peminjaman/.edit',compact('data','barang'));
+        return view('pj/peminjaman/.edit',compact('data','barang'));
     }
 
     public function update(Request $request, $id){
@@ -81,7 +82,7 @@ class PeminjamanController extends Controller
                 'message' => 'Berhasil, data Ruangan berhasil ditambahkan!',
                 'alert-type' => 'success'
             );
-            return redirect()->route('pinjam')->with($notification);
+            return redirect()->route('pj.peminjaman')->with($notification);
 
     }
 
@@ -91,8 +92,6 @@ class PeminjamanController extends Controller
             'message' => 'Berhasil, data Pinjam berhasil dihapus!',
             'alert-type' => 'success'
         );
-        return redirect()->route('pinjam')->with($notification);
+        return redirect()->route('pj.peminjaman')->with($notification);
     }
 }
-
-
